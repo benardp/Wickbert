@@ -58,7 +58,7 @@ void ParticleVelocity::setqpp(double *q, int i)
 	v[i][1] = q[1];
 	v[i][2] = q[2];
 }
-void ParticleVelocity::qnamepp(char **qn)
+void ParticleVelocity::qnamepp(char const **qn)
 {
 	qn[0] = "Velocity x";
 	qn[1] = "Velocity y";

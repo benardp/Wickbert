@@ -172,7 +172,7 @@ void ThinPlateSpline::_setq(double *q)
 }
 
 
-void ThinPlateSpline::getqname(char **qn)
+void ThinPlateSpline::getqname(char const **qn)
 {
 	for (unsigned int i=0; i < centers.size(); i++) {
 		qn[i*4] = "Weight";

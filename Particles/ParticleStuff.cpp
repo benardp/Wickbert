@@ -35,7 +35,7 @@ void ParticleStuff::setName(const std::string &new_name) {
 
 std::string ParticleStuff::getName() {return name;}
 
-static char *stuff_xpm[] = {
+static char const *stuff_xpm[] = {
 	/* columns rows colors chars-per-pixel */
 	"16 15 3 1",
 	"  c None",
@@ -106,9 +106,9 @@ void ParticleStuff::setq(double *) {}
 
 void ParticleStuff::qname(char **) {}
 
-char *ParticleStuff::qtip(int i) {return "";}
+char const *ParticleStuff::qtip(int i) {return "";}
 
-char *ParticleStuff::tip() {return "";}
+char const *ParticleStuff::tip() {return "";}
 
 int ParticleStuff::qlenpp() {return 0;}
 

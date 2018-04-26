@@ -31,7 +31,7 @@ public:
 	int qlenpp();
 	void getqpp(double *q, int i);
 	void setqpp(double *q, int i);
-	void qnamepp(char **qn);
+    void qnamepp(const char **qn);
 
 };
 

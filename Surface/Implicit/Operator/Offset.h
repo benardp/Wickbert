@@ -54,7 +54,7 @@ class Offset : public UnaryOp
     virtual void _setq(double*);            ///< Assigns parameters.
     virtual unsigned int qlen();                    ///< Returns the # of parameters.
 
-    virtual void getqname(char** qn);      ///< Retreives parameter names.
+    virtual void getqname(const char **qn);      ///< Retreives parameter names.
 
     MAKE_NAME();
 

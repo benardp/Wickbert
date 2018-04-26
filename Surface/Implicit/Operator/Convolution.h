@@ -55,7 +55,7 @@ public:
 				positions->x[i].copyTo(&q[n + 3*i]);
 	}
 
-	virtual void getqname(char **qn) {
+    virtual void getqname(char const **qn) {
 		int n = m_f ? m_f->qlen() : 0;
 		if (m_f) m_f->getqname(qn);
 		if (positions) {

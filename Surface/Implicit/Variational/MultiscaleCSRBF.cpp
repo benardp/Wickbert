@@ -141,7 +141,7 @@ void MultiscaleCSRBF::_setq(double *q)
  * Returns a list of parameter names.
  * @param qn an array of size qlen of strings listing names of parameters
  */
-void MultiscaleCSRBF::getqname(char **qn)
+void MultiscaleCSRBF::getqname(char const **qn)
 {
 	qn[0] = "Continuity";
 	qn[1] = "Max Level";

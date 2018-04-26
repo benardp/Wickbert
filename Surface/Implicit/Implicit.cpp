@@ -1229,7 +1229,7 @@ unsigned int Implicit::qlen()
  * (if any) are put into an array which gets returned.
  * @param qn An array of size qlen of strings listing names of parameters
  */
-void Implicit::getqname(char**)
+void Implicit::getqname(char const**)
 { 
 }
 
@@ -1243,7 +1243,7 @@ void Implicit::getqname(NameVector &names)
   
   int theQlen = qlen();
   names.reserve(theQlen);
-  char** n = new char*[theQlen];
+  char const** n = new const char*[theQlen];
   
   getqname(n);
   

@@ -39,7 +39,7 @@ public:
     virtual unsigned int  qlen(void);
     virtual void _setq(double *q);
     virtual void getq(double *q);
-    virtual void getqname(char **qn);
+    virtual void getqname(const char **qn);
 
     virtual void procq(const gmVector3& v, double* dfdq);
 

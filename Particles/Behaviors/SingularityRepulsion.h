@@ -39,13 +39,13 @@ protected:
 		
 public:
 
-	MAKE_PARTICLESTUFF_NAME();
+    MAKE_PARTICLESTUFF_NAME()
 
 	/// parameters
 	int qlen();
 	void getq(double *q);
 	void setq(double *q);
-	void qname(char **qn);
+    void qname(char const **qn);
 
 	/// default constructor
 	SingularityRepulsion(Particles *ps=NULL/*, Particles *t=NULL, ParticleRepulsion *r=NULL*/);

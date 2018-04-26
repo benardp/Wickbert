@@ -272,7 +272,7 @@ void Sphere::_setq(double* q)
  * Returns a list of parameter names.
  * \param qn an array of size qlen of strings listing names of parameters
  */
-void Sphere::getqname(char** qn) 
+void Sphere::getqname(char const** qn)
 {
   qn[0] = "Center X";
   qn[1] = "Center Y";

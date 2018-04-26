@@ -294,7 +294,7 @@ void Segment::_setq(double* q)
  * getqname(char**)
  * Returns a list of parameter names
  */
-void Segment::getqname(char** qn) 
+void Segment::getqname(char const** qn)
 {
   qn[0] = "X0 coord";
   qn[1] = "Y0 coord";

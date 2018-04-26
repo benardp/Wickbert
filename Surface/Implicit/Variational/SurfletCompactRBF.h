@@ -143,7 +143,7 @@ private:
 class SurfletCompactRBF : public CompactRBF
 {
 public:
-    MAKE_NAME();
+    MAKE_NAME()
 
 	//default constructor
     SurfletCompactRBF();
@@ -160,7 +160,7 @@ public:
 	int unsigned qlen();
 	void getq(double *q);
 	void _setq(double *q);
-	void getqname(char **qn);
+    void getqname(const char **qn);
 
 #ifndef INTERVAL_EVAL_ONLY
     virtual double proc(const gmVector3 & x);

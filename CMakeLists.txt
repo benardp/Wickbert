@@ -13,45 +13,45 @@ set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_CU
 
 #-----------------------------------------------------------------------------
 # Output directories.
-SET (LIBRARY_OUTPUT_PATH ${GPS_BINARY_DIR}/bin CACHE INTERNAL "Single output directory for building all libraries.")
-SET (EXECUTABLE_OUTPUT_PATH ${GPS_BINARY_DIR}/bin CACHE INTERNAL "Single output directory for building all executables.")
+SET (LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin CACHE INTERNAL "Single output directory for building all libraries.")
+SET (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin CACHE INTERNAL "Single output directory for building all executables.")
 MARK_AS_ADVANCED(LIBRARY_OUTPUT_PATH EXECUTABLE_OUTPUT_PATH)
 SET(GPS_LIBRARY_PATH "${LIBRARY_OUTPUT_PATH}")
 SET(GPS_EXECUTABLE_PATH "${EXECUTABLE_OUTPUT_PATH}")
 SET(CXX_TEST_PATH ${EXECUTABLE_OUTPUT_PATH})
 
 #Create necessary directories and files 
-FILE(MAKE_DIRECTORY  ${GPS_BINARY_DIR}/bin/release )
-FILE(MAKE_DIRECTORY  ${GPS_BINARY_DIR}/bin/debug )
-FILE(MAKE_DIRECTORY  ${GPS_BINARY_DIR}/bin/release/bitmaps )
-FILE(MAKE_DIRECTORY  ${GPS_BINARY_DIR}/bin/debug/bitmaps )
+FILE(MAKE_DIRECTORY  ${PROJECT_SOURCE_DIR}/bin/release )
+FILE(MAKE_DIRECTORY  ${PROJECT_SOURCE_DIR}/bin/debug )
+FILE(MAKE_DIRECTORY  ${PROJECT_SOURCE_DIR}/bin/release/bitmaps )
+FILE(MAKE_DIRECTORY  ${PROJECT_SOURCE_DIR}/bin/debug/bitmaps )
 
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/defaultparticlesystem.par  ${GPS_BINARY_DIR}/bin/release/defaultparticlesystem.par  COPYONLY)
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/defaultparticlesystem.par  ${GPS_BINARY_DIR}/bin/debug/defaultparticlesystem.par  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/defaultparticlesystem.par  ${PROJECT_SOURCE_DIR}/bin/release/defaultparticlesystem.par  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/defaultparticlesystem.par  ${PROJECT_SOURCE_DIR}/bin/debug/defaultparticlesystem.par  COPYONLY)
 
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/Particles.bmp  ${GPS_BINARY_DIR}/bin/release/bitmaps/Particles.bmp  COPYONLY)
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/Particles.bmp  ${GPS_BINARY_DIR}/bin/debug/bitmaps/Particles.bmp  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/Particles.bmp  ${PROJECT_SOURCE_DIR}/bin/release/bitmaps/Particles.bmp  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/Particles.bmp  ${PROJECT_SOURCE_DIR}/bin/debug/bitmaps/Particles.bmp  COPYONLY)
 
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/Particles.xpm  ${GPS_BINARY_DIR}/bin/release/bitmaps/Particles.xpm  COPYONLY)
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/Particles.xpm  ${GPS_BINARY_DIR}/bin/debug/bitmaps/Particles.xpm  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/Particles.xpm  ${PROJECT_SOURCE_DIR}/bin/release/bitmaps/Particles.xpm  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/Particles.xpm  ${PROJECT_SOURCE_DIR}/bin/debug/bitmaps/Particles.xpm  COPYONLY)
 
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleStuff.bmp  ${GPS_BINARY_DIR}/bin/release/bitmaps/ParticleStuff.bmp  COPYONLY)
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleStuff.bmp  ${GPS_BINARY_DIR}/bin/debug/bitmaps/ParticleStuff.bmp  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleStuff.bmp  ${PROJECT_SOURCE_DIR}/bin/release/bitmaps/ParticleStuff.bmp  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleStuff.bmp  ${PROJECT_SOURCE_DIR}/bin/debug/bitmaps/ParticleStuff.bmp  COPYONLY)
 
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleStuffHeader.bmp  ${GPS_BINARY_DIR}/bin/release/bitmaps/ParticleStuffHeader.bmp  COPYONLY)
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleStuffHeader.bmp  ${GPS_BINARY_DIR}/bin/debug/bitmaps/ParticleStuffHeader.bmp  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleStuffHeader.bmp  ${PROJECT_SOURCE_DIR}/bin/release/bitmaps/ParticleStuffHeader.bmp  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleStuffHeader.bmp  ${PROJECT_SOURCE_DIR}/bin/debug/bitmaps/ParticleStuffHeader.bmp  COPYONLY)
 
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystem.bmp  ${GPS_BINARY_DIR}/bin/release/bitmaps/ParticleSystem.bmp  COPYONLY)
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystem.bmp  ${GPS_BINARY_DIR}/bin/debug/bitmaps/ParticleSystem.bmp  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystem.bmp  ${PROJECT_SOURCE_DIR}/bin/release/bitmaps/ParticleSystem.bmp  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystem.bmp  ${PROJECT_SOURCE_DIR}/bin/debug/bitmaps/ParticleSystem.bmp  COPYONLY)
 
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystem.xpm  ${GPS_BINARY_DIR}/bin/release/bitmaps/ParticleSystem.xpm  COPYONLY)
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystem.xpm  ${GPS_BINARY_DIR}/bin/debug/bitmaps/ParticleSystem.xpm  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystem.xpm  ${PROJECT_SOURCE_DIR}/bin/release/bitmaps/ParticleSystem.xpm  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystem.xpm  ${PROJECT_SOURCE_DIR}/bin/debug/bitmaps/ParticleSystem.xpm  COPYONLY)
 
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystems.bmp  ${GPS_BINARY_DIR}/bin/release/bitmaps/ParticleSystems.bmp  COPYONLY)
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystems.bmp  ${GPS_BINARY_DIR}/bin/debug/bitmaps/ParticleSystems.bmp  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystems.bmp  ${PROJECT_SOURCE_DIR}/bin/release/bitmaps/ParticleSystems.bmp  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystems.bmp  ${PROJECT_SOURCE_DIR}/bin/debug/bitmaps/ParticleSystems.bmp  COPYONLY)
 
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystems.xpm  ${GPS_BINARY_DIR}/bin/release/bitmaps/ParticleSystems.xpm  COPYONLY)
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystems.xpm  ${GPS_BINARY_DIR}/bin/debug/bitmaps/ParticleSystems.xpm  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystems.xpm  ${PROJECT_SOURCE_DIR}/bin/release/bitmaps/ParticleSystems.xpm  COPYONLY)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/wxModeler/bitmaps/ParticleSystems.xpm  ${PROJECT_SOURCE_DIR}/bin/debug/bitmaps/ParticleSystems.xpm  COPYONLY)
 
 #-----------------------------------------------------------------------------
 # GPS build configuration options.
@@ -102,19 +102,14 @@ if ( NOT Boost_FOUND )
   return()
 endif()
 
-
 FIND_PACKAGE(GSL)
 
 IF(WB_USE_SFL)
-    SET(SFL_INCLUDE_PATH "C:/wickbert/sfl/sfl" CACHE PATH "Path to SFL include files" )
-    SET(SFL_LIB_PATH "C:/wickbert/lib-release" CACHE PATH "Path to SFL lib" )
-    SET(SFL_LIB_DEBUG_PATH "C:/wickbert/lib-debug" CACHE PATH "Path to Debug SFL lib" )
-    SET(PI_INCLUDE_PATH "C:/wickbert/sfl/common/pi" CACHE PATH "Path to PI include files" )
+    SET(SFL_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/sfl/sfl" CACHE PATH "Path to SFL include files" )
+    SET(SFL_LIB_PATH "${PROJECT_SOURCE_DIR}/lib-release" CACHE PATH "Path to SFL lib" )
+    SET(SFL_LIB_DEBUG_PATH "${PROJECT_SOURCE_DIR}/lib-debug" CACHE PATH "Path to Debug SFL lib" )
+    SET(PI_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/sfl/common/pi" CACHE PATH "Path to PI include files" )
 ENDIF(WB_USE_SFL)
-
-IF(WIN32)
-SET(GSL_LIB_DEBUG_PATH "C:/wickbert/lib-debug" CACHE PATH "Path to GSL debug lib" )
-ENDIF(WIN32)
 
 IF( WIN32)
     SET(GPS_RC_FILE wxModeler.rc)
@@ -130,14 +125,6 @@ include(${wxWidgets_USE_FILE})
 
 find_package(OpenMesh REQUIRED)
 
-#SET(OPENMESH_INCLUDE_PATH "C:/Program Files"  CACHE PATH "Path to OpenMesh directory" )
-
-#SET(OPENMESH_LIB_PATH  "C:/Program Files/OpenMesh/Win/msvc7/Core/Release" CACHE PATH "Path to OpenMesh lib" )
-
-IF(WIN32)
-SET(OPENMESH_LIB_DEBUG_PATH  "C:/Program Files/OpenMesh/Win/msvc7/Core/Debug" CACHE PATH "Path to OpenMesh Debug lib" )
-ENDIF(WIN32)
-
 IF(WB_USE_CG)
 SET(CG_LIB_PATH CACHE PATH "Path to NVIDIA CG library" )
 SET(CG_INCLUDE_PATH CACHE PATH "Path to NVIDIA CG includes" )
@@ -148,14 +135,12 @@ INCLUDE_DIRECTORIES(
 ENDIF(WB_USE_CG)
 
 IF(WB_USE_CGAL)
+
 # CGAL and its components
 find_package( CGAL QUIET COMPONENTS  )
-
 if ( NOT CGAL_FOUND )
-
   message(STATUS "This project requires the CGAL library, and will not be compiled.")
   return()  
-
 endif()
 
 # include helper file
@@ -167,6 +152,7 @@ include( ${CGAL_USE_FILE} )
 include( CGAL_CreateSingleSourceCGALProgram )
 ENDIF(WB_USE_CGAL)
 
+set(GPS_SOURCE_DIR  ${PROJECT_SOURCE_DIR})
 
 #-----------------------------------------------------------------------------
 # Dispatch the build into the proper subdirectories.
@@ -175,7 +161,8 @@ INCLUDE_DIRECTORIES(
   ism 
   libgm 
   Particles 
-  Surface 
+  Surface
+  ${PROJECT_SOURCE_DIR}
   ${OPENGL_INCLUDE_DIR}
   ${WX_H_INCLUDE_PATH} 
   ${WX_CONTRIB_INCLUDE_PATH}

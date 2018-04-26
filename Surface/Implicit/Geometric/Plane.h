@@ -49,7 +49,7 @@ class Plane : public Geometric
     virtual void _setq(double*);
     virtual unsigned int qlen() { return 4; }
 
-    virtual void getqname(char** qn);
+    virtual void getqname(const char **qn);
 
     MAKE_NAME();
 

@@ -76,7 +76,7 @@ public:
 		}
 	}
 
-	virtual void getqname(char **qn) {
+    virtual void getqname(char const **qn) {
 		if (positions && radii) {
 			for (unsigned int i = 0; i < positions->x.size(); i++) {
 				qn[4*i] = "x";

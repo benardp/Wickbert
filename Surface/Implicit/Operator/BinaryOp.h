@@ -24,7 +24,7 @@ class BinaryOp : public Implicit
     virtual void getq(double *q);
     virtual void procq(const gmVector3 & x, double *q);
 
-    virtual void getqname(char **qn);
+    virtual void getqname(const char **qn);
     virtual bool setChild(int index, Implicit* child);
     virtual Implicit* getChild(int index);
 

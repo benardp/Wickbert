@@ -23,18 +23,18 @@ public:
 	gmVector3 grad(const gmVector3 & x);
 	gmVector3 gradi(const gmVector3 & x, int i);
 	
-	~ThinPlateSpline() { }; 
+    ~ThinPlateSpline() { }
 	
     virtual void getq(double*);
     virtual void _setq(double*);
-    virtual void getqname(char** qn);
+    virtual void getqname(const char **qn);
 	virtual unsigned int qlen() { return centers.size() * 4; }
 
 	virtual void interpolate(Particles *ps, float phi);
 	void updateRBF();
 	double phi(const gmVector3 & x);
 
-	MAKE_NAME();
+    MAKE_NAME()
 
 protected:
 	ParticlePosition *positions;

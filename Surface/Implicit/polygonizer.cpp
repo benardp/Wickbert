@@ -56,7 +56,7 @@ namespace
 
   inline int HASH( int i, int j,int k) 
   { 
-    return (((((i&MASK)<<HASHBIT)|j&MASK)<<HASHBIT)|k&MASK);
+    return (((((i&MASK)<<HASHBIT)|(j&MASK))<<HASHBIT)|(k&MASK));
   } 
 
   inline int BIT(int i, int bit) 
@@ -413,10 +413,10 @@ namespace
     CORNER *c = cube->corners[c3];
     CORNER *d = cube->corners[c4];
     int index = 0, apos, bpos, cpos, dpos, e1, e2, e3, e4, e5, e6;
-    if (apos = (a->value > 0.0)) index += 8;
-    if (bpos = (b->value > 0.0)) index += 4;
-    if (cpos = (c->value > 0.0)) index += 2;
-    if (dpos = (d->value > 0.0)) index += 1;
+    if ((apos = (a->value > 0.0))) index += 8;
+    if ((bpos = (b->value > 0.0))) index += 4;
+    if ((cpos = (c->value > 0.0))) index += 2;
+    if ((dpos = (d->value > 0.0))) index += 1;
     /* index is now 4-bit number representing one of the 16 possible cases */
     if (apos != bpos) e1 = vertid(a, b);
     if (apos != cpos) e2 = vertid(a, c);

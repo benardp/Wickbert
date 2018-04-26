@@ -54,7 +54,7 @@ int UnaryOp::numChildren()
   return numchild;
 }
 
-void UnaryOp::getqname(char **qn)
+void UnaryOp::getqname(const char **qn)
 {
   int myqlen;
   std::string name;

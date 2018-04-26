@@ -51,7 +51,7 @@ void Point::_setq(double* q)
  * Get parameter names.
  * @param qn An array for names.
  */
-void Point::getqname(char** qn) 
+void Point::getqname(char const** qn)
 {
   qn[0] = "X coord";
   qn[1] = "Y coord";

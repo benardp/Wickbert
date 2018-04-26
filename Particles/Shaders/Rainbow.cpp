@@ -29,7 +29,7 @@ void Rainbow::attachAttributes()
 
 	std::string attr_name = source.substr(0,source.find(':'));
 	std::string param_name = source.substr(source.find(':')+1);
-	if (source_attr = ps->getAttribute<ParticleAttribute>(attr_name))
+    if ((source_attr = ps->getAttribute<ParticleAttribute>(attr_name)))
 		source_param = source_attr->perparticle.findparam(param_name);
 	if (source_param)
 		source_data = (DoubleVector *)source_param->ref();

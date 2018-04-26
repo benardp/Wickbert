@@ -45,7 +45,7 @@ class Mover : public UnaryOp
     virtual unsigned int qlen();
     virtual unsigned int plen();
 
-    virtual void getqname(char** qn);
+    virtual void getqname(const char **qn);
 
     MAKE_NAME();
 

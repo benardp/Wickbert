@@ -105,14 +105,14 @@ int Newton::GaussSeidelRow(Box<double> & X, TNTPoint & Xc,
 
   /* Check first interval for possible intersection for solution */
   Y1 += Xc[row];
-  if (ok1 = X[row].overlaps(Y1))
+  if ((ok1 = X[row].overlaps(Y1)))
     T1 = X[row].intersection(Y1);
 
   /* If the Interval division resulted in a split, check second interval */
   ok2 = false;
   Y2 += Xc[row];
   if (split == ISPLIT)
-    if (ok2 = X[row].overlaps(Y2))
+    if ((ok2 = X[row].overlaps(Y2)))
       T2 = X[row].intersection(Y2);
 
   /* Handle all possible cases for ok1 and ok2 */

@@ -233,7 +233,7 @@ void Plane::_setq(double* q)
  * getqname(char**)
  * Returns a list of parameter names
  */
-void Plane::getqname(char** qn) 
+void Plane::getqname(char const ** qn)
 {
   qn[0] = "Normal X";
   qn[1] = "Normal Y";

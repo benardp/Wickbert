@@ -141,7 +141,7 @@ public:
 	AttachedAttributes attachedattributes;
 
 	/// Pixmap icon for this object
-	char **xpm;
+    char const **xpm;
 
 	/** Returns a pointer to an attribute variable given the
 	 * reference string "<attributename>:<variablename>".
@@ -282,11 +282,11 @@ public:
 
 	/** Returns a tool-tip for the parameter i.
 	 */
-	virtual char *qtip(int i);
+    virtual char const *qtip(int i);
 
 	/** Returns a tool-tip for the ParticleStuff
 	 */
-	virtual char *tip();
+    virtual char const *tip();
 
 	/*@}*/
 

@@ -27,7 +27,7 @@ void ParticleShaderDisk::attachAttributes()
 
 	std::string attr_name = radius_source.substr(0,radius_source.find(':'));
 	std::string param_name = radius_source.substr(radius_source.find(':')+1);
-	if (radius_attr = ps->getAttribute<ParticleAttribute>(attr_name))
+    if ((radius_attr = ps->getAttribute<ParticleAttribute>(attr_name)))
 		radius_param = radius_attr->perparticle.findparam(param_name);
 	if (radius_param)
 		radius_data = (DoubleVector *)radius_param->ref();

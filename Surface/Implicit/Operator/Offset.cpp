@@ -200,7 +200,7 @@ unsigned int Offset::qlen()
  * Retreives parameter names.
  * @param qn Paramater name array.
  */
-void Offset::getqname(char** qn)
+void Offset::getqname(char const** qn)
 {
   qn[0] = "Offset";
 

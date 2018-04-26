@@ -119,7 +119,7 @@ void SurfletCompactRBF::_setq(double *q)
  * Returns a list of parameter names.
  * @param qn an array of size qlen of strings listing names of parameters
  */
-void SurfletCompactRBF::getqname(char **qn)
+void SurfletCompactRBF::getqname(char const **qn)
 {
 	qn[0] = "Continuity";
 	qn[1] = "Support Radius";

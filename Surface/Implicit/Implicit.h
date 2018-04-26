@@ -367,7 +367,7 @@ class Implicit : public Surface
     void setq(DoubleVector&);    ///< Set parameters from a double vector
     void setq(TNT::Vector<double>&); ///< Set parameters from TNT double vector
 
-    virtual void getqname(char** qn); /// The name of each parameter
+    virtual void getqname(char const** qn); /// The name of each parameter
     void getqname(NameVector&);       ///< Fetches parameter names into a vector
 
 	/** Change the implicit surface according to the control points of its

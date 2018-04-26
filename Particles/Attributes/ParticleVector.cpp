@@ -65,7 +65,7 @@ void ParticleVector::setqpp(double *q, int i)
 	data[i][1] = q[1];
 	data[i][2] = q[2];
 }
-void ParticleVector::qnamepp(char **qn)
+void ParticleVector::qnamepp(char const **qn)
 {
 	qn[0] = "Vector x";
 	qn[1] = "Vector y";

@@ -105,7 +105,7 @@ void AdaptiveCSRBF::_setq(double *q)
  * Returns a list of parameter names.
  * @param qn an array of size qlen of strings listing names of parameters
  */
-void AdaptiveCSRBF::getqname(char **qn)
+void AdaptiveCSRBF::getqname(char const **qn)
 {
 	qn[0] = "Continuity";
 	qn[1] = "Surflet Degree";

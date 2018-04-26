@@ -214,13 +214,13 @@ void Wyvill::getq(double *q)
  * Array required to have at least qlen ()
  * pointers to strings
  */
-void Wyvill::getqname(char** qn)
+void Wyvill::getqname(char const** qn)
 {
   qn[0] = "Rest radius R";
 
   if (m_f != NULL)
     {
-      char **m_fqname = new char*[m_f->qlen ()];
+      const char **m_fqname = new const char*[m_f->qlen ()];
       m_f->getqname(m_fqname);
 
       for (unsigned int i = 1; i < qlen (); i++)

@@ -9,13 +9,13 @@
 #define MLSSURFACE_H
 
 #include <vector>
-#include <gsl_matrix.h>
-#include <gsl_eigen.h>
-#include <gsl_cblas.h>
-#include <gsl_blas.h>
-#include <gsl_errno.h>
-#include <gsl_math.h>
-#include <gsl_min.h>
+#include <gsl/gsl_matrix.h>
+#include <gsl/gsl_eigen.h>
+#include <gsl/gsl_cblas.h>
+#include <gsl/gsl_blas.h>
+#include <gsl/gsl_errno.h>
+#include <gsl/gsl_math.h>
+#include <gsl/gsl_min.h>
 #include <sstream>
 #include <fstream>
 #include <sfl.h>
@@ -25,7 +25,11 @@
 #include "Kernel.h"
 #include "Surface/KDTree.h"
 
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#else
 #include <GL/gl.h>
+#endif
 
 #include "Surface/Implicit/Implicit.h"
 

@@ -39,7 +39,7 @@ class ImpList : public Implicit, public std::list<Implicit*>
     virtual unsigned int qlen();                    ///< Return number of parameters.
     virtual void getq(double*);            ///< Retrieve parameters.
     virtual void _setq(double*);           ///< Assign parameters.
-    virtual void getqname(char**);         ///< Retrieve parameter names.
+    virtual void getqname(const char **);         ///< Retrieve parameter names.
 
     virtual bool setChild(int index, Implicit* child);  ///< Assign elements.
     virtual Implicit* getChild(int index); ///< Retrieve elements.

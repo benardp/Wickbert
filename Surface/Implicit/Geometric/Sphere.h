@@ -48,7 +48,7 @@ class Sphere : public Geometric
     virtual void _setq(double*);
     virtual unsigned int qlen() { return 4; }
 
-    virtual void getqname(char** qn);
+    virtual void getqname(const char **qn);
 
 	virtual double area() { return 4.0*gmPI*m_r*m_r; }
 

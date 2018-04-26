@@ -59,7 +59,7 @@ class SuggestiveContourStabilization : public ParticleBehavior
     int qlen();
     void getq(double *q);
     void setq(double *q);
-    void qname(char **qn);
+    void qname(char const **qn);
 
     void attachAttributes();
 

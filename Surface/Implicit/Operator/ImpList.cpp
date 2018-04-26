@@ -140,7 +140,7 @@ void ImpList::_setq(double* q)
  * Retrieve parameter names.
  * @param n Array of parameter names.
  */
-void ImpList::getqname(char** n)
+void ImpList::getqname(char const** n)
 {  
   int pos = 0;
   for (i_it = this->begin(); i_it != this->end(); i_it++)

@@ -57,7 +57,7 @@ public:
 	/// Callback for particle addition.
 	virtual void particleAdded();
 
-	char *qtip(int i) { switch(i) {
+    char const *qtip(int i) { switch(i) {
 		case 0:	/* sigma_hat */	return "Desired distance between particles.";
 		case 1:	/* sigma_max */	return "Maximum distance between particles.";
 		case 2: /* diameter */	return "Estimate of the diameter of the surface.";
@@ -71,7 +71,7 @@ public:
 		default: return "";
 	}}
 
-	char *tip() { return "The AdaptiveRepulsionData particle attribute collects data shared "
+    char const *tip() { return "The AdaptiveRepulsionData particle attribute collects data shared "
 						 "by several behaviors that collectively keep particles spaced "
 						 "evenly.";
 	}

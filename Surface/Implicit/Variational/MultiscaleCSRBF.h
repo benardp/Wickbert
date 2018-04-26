@@ -42,7 +42,7 @@ public:
 	unsigned int qlen();
 	void getq(double *q);
 	void _setq(double *q);
-	void getqname(char **qn);
+    void getqname(const char **qn);
 /***End parameters***/
 
 	//default constructor

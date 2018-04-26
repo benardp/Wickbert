@@ -58,7 +58,7 @@ void SingularityRepulsion::setq(double *q)
 	selfRepelConst = q[1];
 }
 
-void SingularityRepulsion::qname(char **qn)
+void SingularityRepulsion::qname(char const **qn)
 {
 	qn[0] = "Target Repulsion constant";
 	qn[1] = "Self Repulsion constant";

@@ -68,7 +68,7 @@ public:
    * and then call UnaryOp::getqname(qn) to let it set its operand's
    * parameters.
    */
-  virtual void getqname(char **qn);
+  virtual void getqname(char const **qn);
 
   /// Sets one of the operands of this operation.
   virtual bool setChild(int index, Implicit* child);

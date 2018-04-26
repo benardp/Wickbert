@@ -55,10 +55,10 @@ void SuggestiveContourStabilization::setq(double *q)
   setScaleStep(q[1]);
 } // end SuggestiveContourStabilization::setq()
 
-void SuggestiveContourStabilization::qname(char **qn)
+void SuggestiveContourStabilization::qname(char const **qn)
 {
-	qn[0] = "Stability threshold.";
-  qn[1] = "Scale step size.";
+    qn[0] = "Stability threshold.";
+    qn[1] = "Scale step size.";
 } // end SuggestiveContourStabilization::qname()
 
 /*! To stabilize suggestive contours, we check the angle between the normal and the view vector.  If they are near parallel,

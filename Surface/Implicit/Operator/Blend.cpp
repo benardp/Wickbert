@@ -130,7 +130,7 @@ void Blend::procq(const gmVector3 & x, double* q)
     }
 }
 
-void Blend::getqname(char** name)
+void Blend::getqname(char const** name)
 {
   name[0] = "Radius 1";
   name[1] = "Radius 2";

@@ -183,7 +183,7 @@ void Mover::_setq(double *q)
 unsigned int Mover::qlen() { return 3; }
 unsigned int Mover::plen() { return 3; }
 
-void Mover::getqname(char** qn)
+void Mover::getqname(char const ** qn)
 {
   qn[0] = "X";
   qn[1] = "Y";

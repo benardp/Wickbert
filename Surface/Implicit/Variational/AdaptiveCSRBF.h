@@ -29,7 +29,7 @@ public:
 	unsigned int qlen();
 	void getq(double *q);
 	void _setq(double *q);
-	void getqname(char **qn);
+    void getqname(const char **qn);
 
 #ifndef INTERVAL_EVAL_ONLY
     virtual double proc(const gmVector3 & x);

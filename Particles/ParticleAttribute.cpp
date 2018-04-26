@@ -10,7 +10,7 @@ Particles is too big, it separates into ParticleAttribute and ParticleBehavior
 #include "ParticleAttribute.h"
 
 
-static char *attr_xpm[] = {
+static char const *attr_xpm[] = {
 	/* columns rows colors chars-per-pixel */
 	"16 15 4 1",
 	"  c None",

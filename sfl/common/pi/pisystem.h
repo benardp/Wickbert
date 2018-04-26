@@ -173,7 +173,7 @@ extern char *pi_getcwd(char *__buf, size_t __size) __PI_THROW;
 #  define  PI_PATHSEP  '/'
 #  define  PI_PATHSEP_STR  "/"
 #endif
-  
+
 #ifdef __cplusplus
 }
 #endif

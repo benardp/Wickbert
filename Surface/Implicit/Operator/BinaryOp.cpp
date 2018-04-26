@@ -122,7 +122,7 @@ int BinaryOp::numChildren()
  * and then call BinaryOp::getqname(qn) to let it set its operands'
  * parameters.
  */
-void BinaryOp::getqname(char **qn)
+void BinaryOp::getqname(char const **qn)
 {
   std::string name;
   int fqlen = m_f ? m_f->qlen() : 0;

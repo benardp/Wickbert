@@ -46,7 +46,7 @@ class Segment : public Geometric
     virtual void _setq(double *q);
     virtual unsigned int qlen() { return 6; }
 
-    virtual void getqname(char** qn);
+    virtual void getqname(const char **qn);
     
     MAKE_NAME();
 };

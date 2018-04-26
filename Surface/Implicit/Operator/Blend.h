@@ -104,7 +104,7 @@ class Blend : public BinaryOp
     virtual void _setq(double* q);
     virtual void getq(double* q);
     virtual void procq(const gmVector3 & x, double* q);
-    virtual void getqname(char** name);
+    virtual void getqname(const char **name);
     virtual unsigned int qlen(void);
 };
 

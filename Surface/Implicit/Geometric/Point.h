@@ -21,7 +21,7 @@ class Point : public Sphere
     virtual void _setq(double*);       ///< Sets parameters
     virtual void getq(double* q);      ///< Gets parameters
     virtual unsigned int qlen() { return 3; }   ///< Returns # of parameters
-    virtual void getqname(char **qn);  ///< Get parameter names
+    virtual void getqname(const char **qn);  ///< Get parameter names
 
     MAKE_NAME();
 };
