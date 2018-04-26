@@ -1,0 +1,57 @@
+Wickbert-0.3
+particlesystem "RBFSystem" {
+	"particles" {
+		Attribute:MeshInterrogator  { surface = "bunny" }
+		Attribute:ParticleMaterial  { all_fdiff = (1,1,0,1) }
+		Attribute:ParticleOrientation  { }
+		Attribute:ParticleScalar  { numElements = 15 }
+		Attribute:ParticleVelocity  { }
+		Attribute:VertexPosition  { }
+		Attribute:VertexScalar "values"  { numElements = 15 }
+		Attribute:VertexScalar "weights"  { numElements = 15 }
+		Shader:OrientParticle [ ParticlePosition = "VertexPosition", ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderSphere  { }
+	}
+	"viewers" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator  { implicit = "RBF" }
+		Attribute:ParticleBoundingBox  { }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleScalar  { numElements = 300 }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { }
+		Attribute:ViewDependence  { camera = (0,0,3.4) }
+		Attribute:ImplicitInterrogator "target"  { implicit = "torus" }
+		Behavior:ParticleCreation  { minpop = 300 }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { singTh = 0 }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceDeformation [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:KDPropagation "SurfacePropagation" [ speed = "ImplicitInterrogator", ParticleNormal = "ParticleOrientation" ] { constfac = 0, tolerance = 1e-006, input = "C:/bunny.pcl", reload = true }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { }
+		Shader:CopyParticle  { eventcode = 2, targetparticles = "particles", destPos = "OBJPosition" }
+	}
+}
+mesh bunny {
+	"C:\Documents and Settings\ericl\Desktop\wickbert_clean2\samples\bunny-10.obj"
+}
+
+surface Variational:RBF "RBF" {
+	pos = particles:VertexPosition
+	val = particles:values
+	weights = particles:weights
+	1 0 0 0.13673 -1 0 0 0.13673 0 1 0 0.13673 0 -1 0 0.13673 0 0 1 0.13673 0 0 -1 0.13673 0 0 0 -0.820377
+}
+
+
+surface Algebraic:Torus "torus" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+

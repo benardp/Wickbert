@@ -1,0 +1,94 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"torus floaters" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator  { implicit = "torus" }
+		Attribute:ParticleAge  { }
+		Attribute:ParticleBoundingBox  { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { all_fdiff = (0.85,0.8,0.65,1), all_bdiff = (0.55,0.75,0.9,1) }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { visMethod = 0 }
+		Attribute:ViewDependence  { camera = (2.88333,3.07466,3.93539) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { scale = 0.95, sides = 20 }
+	}
+	"silhouette floaters" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator  { implicit = "Fv" }
+		Attribute:ParticleAge  { }
+		Attribute:ParticleBoundingBox  { min = (-5,-5,-5), max = (5,5,5) }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleLocalityGrid  { }
+		Attribute:ParticleMaterial  { all_fdiff = (0.2,0.9,0.2,1), all_bdiff = (0,0.5,0.5,1) }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { visMethod = 0 }
+		Attribute:ViewDependence  { camera = (2.88333,3.07466,3.93539) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Behavior:KeepInBounds  { }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { scale = 0.8, sides = 20 }
+	}
+	"silhouette balls" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator "FvInterrogator"  { implicit = "Fv" }
+		Attribute:ParticleAge  { }
+		Attribute:ParticleBoundingBox  { }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleNormal  { }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ImplicitInterrogator "TorusInterrogator"  { implicit = "torus" }
+		Behavior:SurfaceAdhesion "TorusAdhesion" [ ImplicitInterrogator = "TorusInterrogator" ] { }
+		Behavior:SurfaceAdhesion "FvAdhesion" [ ImplicitInterrogator = "FvInterrogator" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleFate [ impint = "FvInterrogator" ] { }
+		Behavior:ParticleCreation  { }
+		Behavior:ViscousDynamics  { }
+		Shader:OrientParticle  { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderSphere  { r = 0.15, n = 20 }
+	}
+}
+surface Algebraic:Torus "~!Algebraic:Torus:1" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+
+surface Algebraic:Torus "Algebraic:Torus:1" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+
+surface Algebraic:Torus "torus" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+
+surface UnaryOp:DirectionalDerivative "Fv" {
+	A = torus
+	v = (0,0.5,0.5)
+}
+
+
+surface UnaryOp:ParabolicPoints "P" {
+	A = torus
+}
+
+

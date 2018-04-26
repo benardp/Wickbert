@@ -1,0 +1,22 @@
+v0.2 
+oriented
+{  
+Attribute:AdaptiveRepulsionData { shortname0 = 0.25, shortname1 = 0.5, shortname2 = 1, shortname3 = 6, shortname4 = 4.8, shortname5 = 3, }  
+Attribute:ImplicitInterrogator { shortname0 = 0, }  
+Attribute:ParticleLocality { }  
+Attribute:ParticleMaterial { }  
+Attribute:ParticleOrientation { shortname0 = 0, shortname1 = 0, shortname2 = 0, }  Attribute:ParticlePosition { }  
+Attribute:ParticleVelocity { }  
+Attribute:ParticleBoundingBox { shortname0 = -3, shortname1 = -3, shortname2 = -3, shortname3 = 3, shortname4 = 3, shortname5 = 3, }  
+Attribute:ParticleLocalityGrid { }  
+Behavior:VelocityIntegrator { }  
+Behavior:SurfaceAdhesion { shortname0 = 15, }  
+Behavior:ParticleRepulsion { shortname0 = 10, shortname1 = 15, }  
+Behavior:ParticleFate { shortname0 = 4, shortname1 = 0.2, shortname2 = 0.7, shortname3 = 1000, }  
+Behavior:ParticleCreation { shortname0 = 10, shortname1 = 1, shortname2 = 497, }  
+Behavior:KeepInBounds { }  
+Behavior:NeighborAlignment { }
+Shader:ParticleShaderOriented { shortname0 = 10 , shortname1 = 1.0 , }  
+Shader:ParticleShaderConstMaterial { shortname0 = 0 , shortname1 = 1 , shortname2 = 0 , shortname3 = 1 , shortname4 = 0.8 , shortname5 = 0.4 , shortname6 = 0.2 , shortname7 = 1 , shortname8 = 0 , shortname9 = 0 , shortname10 = 0 , shortname11 = 0 , } 
+} 
+end 

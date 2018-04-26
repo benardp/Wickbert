@@ -1,0 +1,20 @@
+v0.3
+"Singularity Particles" {
+	"floaters" {
+		Attribute:AdaptiveRepulsionData { }
+		Attribute:ImplicitInterrogator { implicit = "Algebraic:Quadric:Ellipsoid:1" }
+		Attribute:ParticleLocality { }
+		Attribute:ParticleOrientation { gravity = (0,0,0) }
+		Attribute:ParticlePosition { }
+		Attribute:ParticleVelocity { }
+		Attribute:ParticleBoundingBox { min = (-15,-15,-15), max = (15,15,15) }
+		Behavior:ViscousDynamics { }
+		Behavior:SurfaceAdhesion { }
+		Behavior:ParticleRepulsion { }
+		Behavior:ParticleFate { }
+		Behavior:ParticleCreation { }
+		Shader:OrientParticle { }
+		Shader:UseMaterial { }
+		Shader:ParticleShaderDisk { }
+	}
+}

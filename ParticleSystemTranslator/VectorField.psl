@@ -1,0 +1,22 @@
+Behavior VectorField
+{
+	Parameters
+	{
+		// scaler to scale from a vector field.
+		scaler = 1.0
+	}
+	
+	Parameters PerParticle
+	{
+		// direction vector at discrete points
+		gmVector3 vectorField
+	}
+
+	// Behavior functions
+	Behavior applyForce
+	{
+		// just apply to force directly to velocity
+		// interpolation needed.
+	}
+	
+}

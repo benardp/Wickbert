@@ -1,0 +1,15 @@
+v0.3
+"WitkinHeckbert94" {
+	"floaters" {
+		Attribute:AdaptiveRepulsionData { }
+		Attribute:ImplicitInterrogator { implicit = "Algebraic:Torus:1" }
+		Attribute:ParticleMaterial { }
+		Attribute:ParticleMesh { }
+		Attribute:ParticleVelocity { }
+		Behavior:SkinMeshShape { }
+        Behavior:ViscousDynamics { }
+		Shader:UseMaterial { }
+        Shader:OrientParticle { }
+		Shader:ParticleShaderSphere { }
+	}
+}

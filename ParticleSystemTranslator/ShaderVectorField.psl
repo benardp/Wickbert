@@ -1,0 +1,9 @@
+Shader ShaderVectorField
+{
+	Parameters
+	{
+		// scaler to scale from a vector field.
+		scaler = 1.0
+	}
+	
+}

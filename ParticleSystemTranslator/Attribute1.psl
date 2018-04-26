@@ -1,0 +1,24 @@
+// this is an example particle system language
+// base name can be (Attribute, Behavior, Shader): class name
+// this file will generate two files, test.cpp and test.h
+Attribute Attribute1
+{
+	// Parameters are always type double
+	// this uses the setq and getq interface
+	Parameters
+	{
+		// varName, "long name shows the meaning of the parameter"=default value;
+		jitterSize = 0.1 // "this controls how large the jitter size is"
+	}
+
+	// per particle parameter will be stored in a vector, so type is important
+	Parameters PerParticle
+	{
+		Point oldPosition 
+	}
+
+	// Attribute may have: clear
+	// Behavior may have: attachAttributes, applyForce, applyConstraint, integrate, cleanup
+	// Shader may have: attachAttributes, drawShape(int i), draw()
+
+}

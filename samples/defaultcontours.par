@@ -1,0 +1,43 @@
+v0.2
+floaters
+{
+ Attribute:AdaptiveRepulsionData { shortname0 = 0.25, shortname1 = 0.5, shortname2 = 1, shortname3 = 6, shortname4 = 4.8, shortname5 = 3, }
+ Attribute:ImplicitInterrogator { shortname0 = 0, }
+ Attribute:ParticlePosition { }
+ Attribute:ParticleBoundingBox { shortname0 = -3, shortname1 = -3, shortname2 = -3, shortname3 = 3, shortname4 = 3, shortname5 = 3, }
+ Attribute:ParticleLocalityGrid { }
+ Attribute:ParticleMaterial { }
+ Attribute:ParticleOrientation { shortname0 = 0, shortname1 = 0, shortname2 = 0, }
+ Attribute:ParticleVelocity { }
+ Attribute:ViewDependence { }
+ Behavior:VelocityIntegrator { }
+ Behavior:SurfaceAdhesion { shortname0 = 15, }
+ Behavior:ParticleRepulsion { shortname0 = 10, shortname1 = 15, }
+ Behavior:ParticleFate { shortname0 = 4, shortname1 = 0.2, shortname2 = 0.7, shortname3 = 2000, }
+ Behavior:ParticleCreation { shortname0 = 10, shortname1 = 1, shortname2 = 534, }
+ Behavior:KeepInBounds { }
+ Shader:ParticleShaderDisk { shortname0 = 10 , shortname1 = 1 , }
+ Shader:ParticleShaderRadialCurvature { shortname0 = 0.00015 , }
+}
+contours
+{
+ Attribute:AdaptiveRepulsionData { shortname0 = 0.25, shortname1 = 0.5, shortname2 = 1, shortname3 = 3, shortname4 = 1, shortname5 = 3, }
+ Attribute:ImplicitInterrogator { shortname0 = 0, }
+ Attribute:ParticlePosition { }
+ Attribute:ParticleAge { }
+ Attribute:ParticleBoundingBox { shortname0 = -3, shortname1 = -3, shortname2 = -3, shortname3 = 3, shortname4 = 3, shortname5 = 3, }
+ Attribute:ParticleLocality { }
+ Attribute:ParticleLocalityGrid { }
+ Attribute:ParticleMaterial { }
+ Attribute:ParticleOrientation { shortname0 = 0, shortname1 = 0, shortname2 = 0, }
+ Attribute:ParticleVelocity { }
+ Behavior:VelocityIntegrator { }
+ Behavior:SurfaceAdhesion { shortname0 = 15, }
+ Behavior:ParticleRepulsion { shortname0 = 10, shortname1 = 15, }
+ Behavior:SuggestiveContourAdhesion { shortname0 = 0.002 }
+ Behavior:SilhouetteFate { shortname0 = 1, shortname1 = 100, }
+ Behavior:ParticleCreation { shortname0 = 30, shortname1 = 1, shortname2 = 100, }
+ Shader:ParticleShaderSphere { shortname0 = 0.1 , shortname1 = 10 , }
+ Shader:ParticleShaderChain { shortname0 = 1 , shortname1 = 0.1 , shortname2 = 1 , }
+}
+end

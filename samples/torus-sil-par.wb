@@ -1,0 +1,102 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"torus floaters" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator  { implicit = "torus" }
+		Attribute:ParticleBoundingBox  { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { }
+		Attribute:ViewDependence  { camera = (0,1.37819,4.80631) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { scale = 1 }
+	}
+	"silhouette floaters" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator  { implicit = "Fv" }
+		Attribute:ParticleBoundingBox  { min = (-5,-5,-5), max = (5,5,5) }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { all_fdiff = (0,1,0,1), all_bdiff = (0,0.5,0.5,1) }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { }
+		Attribute:ViewDependence  { camera = (0,1.37819,4.80631) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Behavior:KeepInBounds  { }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { scale = 1 }
+	}
+	"silhouette balls" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator "FvInterrogator"  { implicit = "Fv" }
+		Attribute:ParticleBoundingBox  { }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { all_fdiff = (1,1,0,1) }
+		Attribute:ParticleNormal  { }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ImplicitInterrogator "TorusInterrogator"  { implicit = "torus" }
+		Behavior:SurfaceAdhesion "TorusAdhesion" [ ImplicitInterrogator = "TorusInterrogator" ] { }
+		Behavior:SurfaceAdhesion "FvAdhesion" [ ImplicitInterrogator = "FvInterrogator" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleFate [ impint = "FvInterrogator" ] { }
+		Behavior:ParticleCreation  { }
+		Behavior:ViscousDynamics  { }
+		Shader:OrientParticle  { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderSphere  { }
+	}
+	"parabolics" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator  { implicit = "P" }
+		Attribute:ParticleBoundingBox  { min = (-4,-4,-4), max = (4,4,4) }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { all_fdiff = (1,0,1,1), all_bdiff = (0.5,0,0.5,1) }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { }
+		Attribute:ViewDependence  { camera = (0,1.37819,4.80631) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Behavior:ParticleValueDeath  { threshold = 1 }
+		Behavior:KeepInBounds  { }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { }
+	}
+}
+surface Algebraic:Torus "torus" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+
+surface UnaryOp:DirectionalDerivative "Fv" {
+	A = torus
+	v = (0,0.99,0.141)
+}
+
+
+surface UnaryOp:ParabolicPoints "P" {
+	A = torus
+}
+
+

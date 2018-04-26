@@ -1,0 +1,34 @@
+void main(			  
+	float4 fwindowpos : WPOS,
+	float3 positionEC  : TEXCOORD0,                     
+    float3 normalEC    : TEXCOORD1,
+	float3 diskCenterEC : TEXCOORD2,
+    out float4 oColor   : COLOR,
+    uniform float3 lightPositionEC,
+	uniform float4 diffuseColor,
+	uniform float diskRadius,
+	uniform float depthRange,
+	uniform float toleranceScaleFactor,
+	uniform samplerRECT firstPassDepth)
+{
+  // First, determine whether or not the current fragment is within
+  // the valid drawing range
+  float topDepth = texRECT(firstPassDepth, fwindowpos.xy);
+  float tolerance = toleranceScaleFactor * (diskRadius / depthRange);
+  if (fwindowpos.z > topDepth + tolerance) discard;
+ 
+  // Output blend
+  float pi = 3.141592;
+  float mu = 1.1 / 3.0;
+  float bot = sqrt(2.0 * pi) * mu;
+  float x = distance(diskCenterEC, positionEC) / diskRadius;
+  float extop = - pow(x, 2);
+  float exbot = 2 * pow(mu, 2);
+  float top = exp(extop / exbot);
+  float weight = top / bot;
+  oColor.xyz = weight * normalize(normalEC);
+  //oColor.xyz = float3(topDepth, topDepth, topDepth);
+  oColor.w = 1.0;
+
+}
+

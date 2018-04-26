@@ -1,0 +1,67 @@
+Wickbert-0.3
+particlesystem "RBFSystem" {
+	"centers" {
+		Attribute:MeshInterrogator  { surface = "sphere" }
+		Attribute:ParticleMaterial  { all_fdiff = (1,1,0,1) }
+		Attribute:ParticleOrientation  { }
+		Attribute:ParticleScalar  { numElements = 7 }
+		Attribute:ParticleVelocity  { }
+		Attribute:VertexPosition  { }
+		Attribute:VertexScalar "values"  { numElements = 7 }
+		Attribute:VertexScalar "weights"  { numElements = 7 }
+		Shader:OrientParticle [ ParticlePosition = "VertexPosition", ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderSphere  { }
+	}
+	"floaters" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator  { implicit = "RBF" }
+		Attribute:ParticleBoundingBox  { }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleScalar  { numElements = 300 }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { }
+		Attribute:ViewDependence  { camera = (-1.46186,0.582721,4.74588) }
+		Attribute:ImplicitInterrogator "target"  { implicit = "gsphere" }
+		Behavior:ParticleCreation  { minpop = 300 }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { singTh = 0 }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceDeformation [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:SurfacePropagation [ speed = "target", ParticleNormal = "ParticleOrientation" ] { constfac = 0, tolerance = 1e-006 }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { }
+		Shader:CopyParticle  { eventcode = 2, targetparticles = "particles", destPos = "OBJPosition" }
+	}
+}
+mesh sphere {
+	"samples\sphere4.obj"
+}
+
+surface Variational:RBF "RBF" {
+	pos = centers:VertexPosition
+	val = centers:values
+	weights = centers:weights
+	1.5 0 0 -1.5 0 0 0 1.5 0 0 -1.5 0 0 0 1.5 0 0 -1.5 0 0 0
+}
+
+
+surface Algebraic:Torus "torus" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+
+surface Algebraic:Torus "torus2" {
+	9.00038 7.67455e-010 4.54695e-009 -3.79664e-009 -9.99988 -3.27477e-009 -9.99988 -2.11747e-010 2.4125e-009 5.99991 -7.8692e-011 -5.02157e-010 -4.40659e-011 -4.68477e-010 2.41869e-010 -9.99008e-011 4.20096e-010 -6.15103e-010 -2.36267e-009 2.6715e-009 0.999976 3.32435e-010 1.99995 3.78292e-010 0.999976 -5.7832e-011 -2.70659e-010 -1.00446e-010 -1.93173e-010 1.99995 1.80644e-009 1.99995 1.1308e-009 -1.63068e-009 0.999978
+}
+
+
+surface Geometric:Sphere "gsphere" {
+	0 0 0 1.8
+}
+
+

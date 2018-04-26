@@ -1,0 +1,11 @@
+v0.3
+"pig" {
+	"verts" {
+		Attribute:MeshInterrogator { surface = "pig" }
+		Attribute:VertexOrientation { }
+		Attribute:VertexPosition { }
+		Shader:UseMaterial { }
+		Shader:OrientParticle { }
+		Shader:ParticleShaderDisk { }
+	}
+}

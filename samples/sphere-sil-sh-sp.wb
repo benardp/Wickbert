@@ -1,0 +1,70 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"sil" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator  { implicit = "sp" }
+		Attribute:ParticleBoundingBox  { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleVector  { }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { offset = 0.5, useNormalTest = false }
+		Attribute:ViewDependence  { camera = (-0.695866,-0.603417,4.91443) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Behavior:SilhouetteAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:ShaderSilhouetteContour  { color = (0,0,0,1), Visibility = true }
+	}
+	"shadows" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator  { implicit = "sp" }
+		Attribute:LightPosition  { }
+		Attribute:ParticleBoundingBox  { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleVector  { }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { }
+		Attribute:ViewDependence  { camera = (-0.695866,-0.603417,4.91443) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Behavior:ShadowAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:ShaderShadowContour  { color = (0,0,0,1), Visibility = true }
+	}
+	"spec" {
+		Attribute:AdaptiveRepulsionData  { sigma_hat = 0.1 }
+		Attribute:ImplicitInterrogator  { implicit = "sp" }
+		Attribute:LightPosition  {}
+		Attribute:ParticleBoundingBox  { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleVector  { }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { }
+		Attribute:ViewDependence  { camera = (-0.695866,-0.603417,4.91443) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Behavior:SpecularAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:ShaderSpecularContour  { color = (0,0,0,1), Visibility = true }
+	}
+}
+surface Algebraic:Quadric:Ellipsoid "sp" {
+	-4 0 0 0 1 0 1 0 0 1
+}
+
+

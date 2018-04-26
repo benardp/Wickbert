@@ -1,0 +1,17 @@
+// comment
+Attribute Attri2ClassName
+{
+	Parameters
+	{
+		// varName, "long name shows the meaning of the parameter"=default value;
+		jitterSize = 0.1 // "this controls how large the jitter size is"
+		tryAgain = 99
+	}
+	
+	Parameters PerParticle
+	{
+		// record history of position
+		Point oldPosition
+	}
+
+}

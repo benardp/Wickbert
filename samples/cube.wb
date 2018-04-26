@@ -1,0 +1,83 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"floaters" {
+		Attribute:AdaptiveRepulsionData { }
+		Attribute:ImplicitInterrogator { implicit = "cube" }
+		Attribute:ParticleBoundingBox { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleLocality { }
+		Attribute:ParticleMaterial { }
+		Attribute:ParticleOrientation { gravity = (0,0,0) }
+		Attribute:ParticlePosition { }
+		Attribute:ParticleVelocity { }
+		Attribute:ParticleVisibility { }
+		Attribute:ViewDependence { camera = (0,0,5) }
+		Behavior:ParticleFate { cap = 1000 }
+		Behavior:ViscousDynamics { }
+		Behavior:SurfaceAdhesion { }
+		Behavior:ParticleRepulsion { }
+		Behavior:ParticleCreation { }
+		Shader:OrientParticle { }
+		Shader:UseMaterial { }
+		Shader:ParticleShaderDisk { }
+		Shader:CopyParticle { eventcode = 2, targetparticles = "Continuityrols" }
+	}
+}
+
+surface Geometric:Plane "x0" {
+	1 0 0 1
+}
+
+surface Geometric:Plane "x1" {
+	-1 0 0 1
+}
+
+surface Geometric:Plane "y0" {
+	0 1 0 1
+}
+
+surface Geometric:Plane "y1" {
+	0 -1 0 1
+}
+
+surface Geometric:Plane "z0" {
+	0 0 1 1
+}
+
+surface Geometric:Plane "z1" {
+	0 0 -1 1
+}
+
+surface BinaryOp:Intersection "cubx" {
+	A = x0
+	B = x1
+	Continuity = 0
+	Sign = 1
+}
+
+surface BinaryOp:Intersection "cuby" {
+	A = y0
+	B = y1
+	Continuity = 0
+	Sign = 1
+}
+
+surface BinaryOp:Intersection "cubz" {
+	A = z0
+	B = z1
+	Continuity = 0
+	Sign = 1
+}
+
+surface BinaryOp:Intersection "cubxy" {
+	A = cubx
+	B = cuby
+	Continuity = 0
+	Sign = 1
+}
+
+surface BinaryOp:Intersection "cube" {
+	A = cubxy
+	B = cubz
+	Continuity = 0
+	Sign = 1
+}

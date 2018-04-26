@@ -1,0 +1,78 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"sil" {
+		Attribute:AdaptiveRepulsionData  { sigma_hat = 0.1 }
+		Attribute:ImplicitInterrogator  { implicit = "torus" }
+		Attribute:ParticleBoundingBox  { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleVector  { }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { offset = 0.5, useNormalTest = false }
+		Attribute:PolyLines  { }
+		Attribute:ViewDependence  { camera = (1.2941,2.41481,-4.18258) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Behavior:SilhouetteAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:ShaderSilhouetteContour  { color = (0,0,0,1), Visibility = true }
+	}
+	"shadows" {
+		Attribute:AdaptiveRepulsionData  { sigma_hat = 0.1 }
+		Attribute:ImplicitInterrogator  { implicit = "torus" }
+		Attribute:LightPosition  { light = (10.3475,11.1181,25.8712,0) }
+		Attribute:ParticleBoundingBox  { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleVector  { }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { }
+		Attribute:PolyLines  { }
+		Attribute:ViewDependence  { camera = (1.2941,2.41481,-4.18258) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Behavior:ShadowAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:ShaderShadowContour  { color = (0,0,0,1), Visibility = true }
+	}
+	"spec" {
+		Attribute:AdaptiveRepulsionData  { sigma_hat = 0.1 }
+		Attribute:ImplicitInterrogator  { implicit = "torus" }
+		Attribute:LightPosition  { light = (5,20,10,1) }
+		Attribute:ParticleBoundingBox  { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleVector  { }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { }
+		Attribute:PolyLines  { }
+		Attribute:ViewDependence  { camera = (1.2941,2.41481,-4.18258) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Behavior:SpecularAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:ShaderSpecularContour  { color = (0,0,0,1), Visibility = true }
+	}
+}
+surface Algebraic:Torus "~!Algebraic:Torus:1" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+
+surface Algebraic:Torus "torus" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+

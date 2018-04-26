@@ -1,0 +1,167 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"floaters" {
+		Attribute:AdaptiveRepulsionData  { sigma_hat = 0.1 }
+		Attribute:ImplicitInterrogator  { implicit = "csg" }
+		Attribute:ParticleBoundingBox  { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { }
+		Attribute:ViewDependence  { camera = (3.10858,-0.263128,-2.50349) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { nu = 0.1, cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Behavior:FeatureDetector [ ParticleNormal = "ParticleOrientation" ] { target = "features" }
+		Behavior:AsymmetricRepulsion  { source = "features" }
+		Behavior:ParticleValueDeath  { threshold = 0.1 }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { }
+		Shader:CopyParticle  { eventcode = 2, targetparticles = "controls" }
+	}
+	"features" {
+		Attribute:ImplicitInterrogator  { implicit = "csg" }
+		Attribute:ParticleMaterial  { all_fdiff = (1,1,0,1) }
+		Attribute:ParticleNormal  { }
+		Attribute:ParticlePosition  { }
+		Behavior:ParticleValueDeath  { threshold = 0.1 }
+		Shader:OrientParticle  { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderSphere  { }
+	}
+}
+surface Algebraic:Torus "~!Algebraic:Torus:1" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+
+surface Algebraic:Quadric:Cylinder "cyl" {
+	-0.356332 0.0055009 -0.00742609 0 1 0 1 0 0 0
+}
+
+
+surface Geometric:Plane "top" {
+	0 0 1 2.40001
+}
+
+
+surface Geometric:Plane "bot" {
+	0 0 -1 2.4
+}
+
+
+surface BinaryOp:CSGIntersection "intz" {
+	A = top
+	B = bot
+}
+
+
+surface BinaryOp:CSGIntersection "shortcyl" {
+	A = cyl
+	B = intz
+}
+
+
+surface Geometric:Plane "x0" {
+	1 0 0 1.2
+}
+
+
+surface Geometric:Plane "x1" {
+	-1 0 0 1.20001
+}
+
+
+surface Geometric:Plane "y0" {
+	0 1 0 1.20001
+}
+
+
+surface Geometric:Plane "y1" {
+	0 -1 0 1.2
+}
+
+
+surface Geometric:Plane "z0" {
+	0 0 1 1.20002
+}
+
+
+surface Geometric:Plane "z1" {
+	0 0 -1 1.20001
+}
+
+
+surface BinaryOp:CSGIntersection "cubx" {
+	A = x0
+	B = x1
+}
+
+
+surface BinaryOp:CSGIntersection "cuby" {
+	A = y0
+	B = y1
+}
+
+
+surface BinaryOp:CSGIntersection "cubz" {
+	A = z0
+	B = z1
+}
+
+
+surface BinaryOp:CSGIntersection "cubxy" {
+	A = cubx
+	B = cuby
+}
+
+
+surface BinaryOp:CSGIntersection "cube" {
+	A = cubxy
+	B = cubz
+}
+
+
+surface BinaryOp:CSGUnion "part" {
+	A = shortcyl
+	B = cube
+}
+
+
+surface Algebraic:Quadric:Cylinder "hole1" {
+	-0.35524 0 0.000279986 -0.00180709 0 0 1 0 0 1
+}
+
+
+surface Algebraic:Quadric:Cylinder "hole2" {
+	-0.353248 -0.0163075 0 -0.00595755 1 0 0 0 0 1
+}
+
+
+surface UnaryOp:Complement "chole1" {
+	A = hole1
+}
+
+
+surface UnaryOp:Complement "chole2" {
+	A = hole2
+}
+
+
+surface BinaryOp:CSGIntersection "whole1" {
+	A = part
+	B = chole1
+}
+
+
+surface BinaryOp:CSGIntersection "csg" {
+	A = whole1
+	B = chole2
+}
+
+

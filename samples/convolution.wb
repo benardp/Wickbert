@@ -1,0 +1,49 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"floaters" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator  { implicit = "conv" }
+		Attribute:ParticleBoundingBox  { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { }
+		Attribute:ViewDependence  { camera = (0,0,5) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { }
+		Shader:CopyParticle  { eventcode = 2, targetparticles = "controls" }
+	}
+	"centers" {
+		Attribute:ParticleMaterial  { all_fdiff = (0,1,0,1) }
+		Attribute:ParticleNormal  { }
+		Attribute:ParticlePosition  { }
+		Shader:OrientParticle  { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderSphere  { }
+	}
+}
+surface Algebraic:Torus "torus" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+
+surface UnaryOp:Convolution "conv" {
+	A = ball
+	pos = centers:ParticlePosition
+	-0.25 0 0 0 1 0
+}
+
+
+surface Algebraic:Quadric:Ellipsoid "ball" {
+	-0.25 0 0 0 1 0 1 0 0 1
+}
+
+

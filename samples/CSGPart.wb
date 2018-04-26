@@ -1,0 +1,128 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"floaters" {
+		Attribute:AdaptiveRepulsionData { }
+		Attribute:ImplicitInterrogator { implicit = "whole" }
+		Attribute:ParticleBoundingBox { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleLocality { }
+		Attribute:ParticleMaterial { }
+		Attribute:ParticleOrientation { gravity = (0,0,0) }
+		Attribute:ParticlePosition { }
+		Attribute:ParticleVelocity { }
+		Attribute:ParticleVisibility { }
+		Attribute:ViewDependence { camera = (0,0,5) }
+		Behavior:ParticleFate { cap = 1000 }
+		Behavior:ViscousDynamics { }
+		Behavior:SurfaceAdhesion { }
+		Behavior:ParticleRepulsion { }
+		Behavior:ParticleCreation { }
+		Shader:OrientParticle { }
+		Shader:UseMaterial { }
+		Shader:ParticleShaderDisk { }
+		Shader:CopyParticle { eventcode = 2, targetparticles = "controls" }
+	}
+}
+
+surface Algebraic:Quadric:Cylinder "cyl" {
+	-1 0 0 0 1 0 1 0 0 0
+}
+surface Geometric:Plane "p1" {
+	0 0 1 5
+}
+surface Geometric:Plane "p2" {
+	0 0 -1 5
+}
+
+surface BinaryOp:Intersection "intz" {
+	A = p1
+	B = p2
+	Continuity = 0
+	Sign = 1
+	1 1
+}
+surface BinaryOp:Intersection "shortcyl" {
+	A = cyl
+	B = intz
+	Continuity = 0
+	Sign = 1
+	1 1
+}
+
+
+surface Geometric:Plane "f1" {
+	0 0 1 1.5
+}
+surface Geometric:Plane "f2" {
+	0 0 -1 1.5
+}
+surface Geometric:Plane "f3" {
+	0 1 0 1.5
+}
+surface Geometric:Plane "f4" {
+	0 -1 0 1.5
+}
+surface Geometric:Plane "f5" {
+	1 0 0 1.5
+}
+surface Geometric:Plane "f6" {
+	-1 0 0 1.5
+}
+
+surface BinaryOp:Intersection "intfz" {
+	A = f1
+	B = f2
+	Continuity = 0
+	Sign = 1
+	1 1
+}
+surface BinaryOp:Intersection "intfy" {
+	A = f3
+	B = f4
+	Continuity = 0
+	Sign = 1
+	1 1
+}
+surface BinaryOp:Intersection "intfx" {
+	A = f5
+	B = f6
+	Continuity = 0
+	Sign = 1
+	1 1
+}
+surface BinaryOp:Intersection "intfzy" {
+	A = intfz
+	B = intfy
+	Continuity = 0
+	Sign = 1
+	1 1
+}
+surface BinaryOp:Intersection "cube" {
+	A = intfzy
+	B = intfx
+	Continuity = 0
+	Sign = 1
+	1 1
+}
+surface BinaryOp:Union "union" {
+	A = shortcyl
+	B = cube
+	Continuity = 0
+	Sign = -1
+	1 1
+}
+
+surface Algebraic:Quadric:Ellipsoid "sphere" {
+	-4 0 0 0 1 0 1 0 0 1
+}
+
+surface UnaryOp:Complement "csphere" {
+	A = sphere
+}
+
+surface BinaryOp:Intersection "whole" {
+	A = union
+	B = csphere
+	Continuity = 0
+	Sign = 1
+	1 1
+}

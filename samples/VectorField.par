@@ -1,0 +1,14 @@
+v0.2
+floaters
+{
+ Attribute:ParticleMaterial { }
+ Attribute:ParticleOrientation { shortname0 = 0, shortname1 = 0, shortname2 = 0, }
+ Attribute:ParticlePosition { }
+ Attribute:ParticleVelocity { }
+ Behavior:VelocityIntegrator { }
+ Behavior:ParticleCreation { shortname0 = 10, shortname1 = 1, shortname2 = 127, }
+ Behavior:VectorField { shortname0 = 1.0, }
+ Shader:ParticleShaderSphere { shortname0 = 1.0 , shortname1 = 10 , }
+ Shader:ParticleShaderConstMaterial { shortname0 = 1 , shortname1 = 0 , shortname2 = 0 , shortname3 = 1 , shortname4 = 0 , shortname5 = 0 , shortname6 = 1 , shortname7 = 1 , shortname8 = 0 , shortname9 = 0 , shortname10 = 0 , shortname11 = 0 , }
+}
+end

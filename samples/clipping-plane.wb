@@ -1,0 +1,58 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"floaters" {
+		Attribute:AdaptiveRepulsionData { }
+		Attribute:ImplicitInterrogator { implicit = "torus" }
+		Attribute:ParticleBoundingBox { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleLocality { }
+		Attribute:ParticleMaterial { }
+		Attribute:ParticleOrientation { gravity = (0,0,0) }
+		Attribute:ParticlePosition { }
+		Attribute:ParticleVelocity { }
+		Attribute:ParticleVisibility { }
+		Attribute:ViewDependence { camera = (-0.174497,4.95971,-0.608975) }
+		Behavior:ParticleFate { cap = 1000 }
+		Behavior:ViscousDynamics { }
+		Behavior:SurfaceAdhesion { }
+		Behavior:ParticleRepulsion { }
+		Behavior:ParticleCreation { }
+		Shader:OrientParticle { }
+		Shader:UseMaterial { }
+		Shader:ParticleShaderDisk { scale = 0.1 }
+		Shader:CopyParticle { eventcode = 2, targetparticles = "controls" }
+	}
+	"planers" {
+		Attribute:AdaptiveRepulsionData { sigma_hat = 0.05, sigma_max = 0.2 }
+		Attribute:ImplicitInterrogator { implicit = "plane" }
+		Attribute:ParticleBoundingBox { min = (-5,-5,-5), max = (5,5,5) }
+		Attribute:ParticleLocality { }
+		Attribute:ParticleMaterial { all_fdiff = (1,0,0,0) }
+		Attribute:ParticleOrientation { gravity = (0,0,0) }
+		Attribute:ParticlePosition { }
+		Attribute:ParticleVelocity { }
+		Attribute:ParticleVisibility { }
+		Attribute:ViewDependence { camera = (-0.174497,4.95971,-0.608975) }
+		Attribute:ImplicitInterrogator "colorsource" { implicit = "torus" }
+		Behavior:ParticleFate { cap = 1000 }
+		Behavior:ViscousDynamics { }
+		Behavior:SurfaceAdhesion { }
+		Behavior:ParticleRepulsion { }
+		Behavior:ParticleCreation { }
+		Behavior:KeepInBounds { }
+		Shader:OrientParticle { }
+		Shader:Rainbow { source = "colorsource:kg", red = 0, wrap = true }
+		Shader:UseMaterial { }
+		Shader:ParticleShaderDisk { scale = 1 }
+		Shader:CopyParticle { eventcode = 2, targetparticles = "controls" }
+	}
+}
+surface Algebraic:Torus "torus" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+
+surface Geometric:Plane "plane" {
+	0 1 0 0
+}
+
+

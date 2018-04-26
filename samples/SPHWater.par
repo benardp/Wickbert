@@ -1,0 +1,33 @@
+v0.2
+floaters
+{
+  Attribute:ParticleMaterial { }
+ Attribute:ParticlePosition { }
+ Attribute:ParticleVelocity { }
+ Attribute:ParticleAcceleration { }
+ Attribute:ParticleDensity { }
+ Attribute:ParticleBoundingBox { shortname0 = -3, shortname1 = -3, shortname2 = -3, shortname3 = 3, shortname4 = 3, shortname5 = 3, }
+ Attribute:ParticleLocalityGrid { }
+ Behavior:SPHInitial { }
+ Behavior:SPHGravity { }
+ Behavior:SPHPressure { }
+ Behavior:SPHViscosity { }
+ Behavior:SPHTension { }
+ Behavior:ParticleFate { shortname0 = 4, shortname1 = 0.2, shortname2 = 0.7, shortname3 = 1000, }
+ Behavior:ParticleCreation { shortname0 = 200, shortname1 = 1, shortname2 = 497, }
+ Behavior:SPHConstraint { }
+ Behavior:AccelerationIntegrator { }
+ Shader:ParticleShaderSphere { shortname0 = 0.5 , shortname1 = 10 , }
+ Shader:ParticleShaderConstMaterial { shortname0 = 1 , shortname1 = 0 , shortname2 = 0 , shortname3 = 1 , shortname4 = 0 , shortname5 = 0 , shortname6 = 1 , shortname7 = 1 , shortname8 = 0 , shortname9 = 0 , shortname10 = 0 , shortname11 = 0 , }
+}
+controls
+{
+ Attribute:ImplicitInterrogator { shortname0 = 0, }
+ Attribute:ParticleMaterial { }
+ Attribute:ParticlePosition { }
+ Attribute:ParticleVelocity { }
+ Attribute:ParticleAcceleration { }
+ Attribute:ParticleDensity { }
+ Shader:ParticleShaderCylinder { shortname0 = 0.1 , shortname1 = 0 , shortname2 = 0.3 , shortname3 = 10 , shortname4 = 1 , }
+}
+end

@@ -1,0 +1,13 @@
+v0.3
+"barycenter disks" {
+	"verts" {
+		Attribute:FaceOrientation { }
+		Attribute:FacePosition { }
+		Attribute:ImplicitInterrogator { implicit = "Algebraic:2" }
+		Attribute:MeshInterrogator { surface = "fandisk" }
+		Attribute:ParticleMaterial { }
+		Shader:UseMaterial { }
+		Shader:OrientParticle { }
+		Shader:ParticleShaderDisk { scale = 0.01 }
+	}
+}

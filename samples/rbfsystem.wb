@@ -1,0 +1,46 @@
+Wickbert-0.3
+particlesystem "RBFSystem" {
+	"particles" {
+		Attribute:ImplicitInterrogator { implicit = "RBFSurf" }
+		Attribute:MeshInterrogator { surface = "ludwig" }
+		Attribute:OBJPosition { nmElements = 252, objFileNm = "bin/debug/ludwig-500.pts" }
+		Attribute:ParticleMaterial { all_fdiff = (1,0.7,0.2,1) }
+		Attribute:ParticleOrientation { }
+		Attribute:ParticleScalar { numElements = 252 }
+		Attribute:ParticleVelocity { }
+		Shader:OrientParticle { }
+		Shader:UseMaterial { }
+		Shader:ParticleShaderSphere { }
+	}
+	"viewers" {
+		Attribute:AdaptiveRepulsionData { }
+		Attribute:ImplicitInterrogator { implicit = "RBFSurf" }
+		Attribute:ParticleBoundingBox { }
+		Attribute:ParticleLocality { }
+		Attribute:ParticleMaterial { }
+		Attribute:ParticleOrientation { }
+		Attribute:ParticlePosition { }
+		Attribute:ParticleScalar { numElements = 350 }
+		Attribute:ParticleVelocity { }
+		Attribute:ParticleVisibility { }
+		Attribute:ViewDependence { camera = (0,0,5) }
+		Behavior:ParticleCreation { minpop = 350 }
+		Behavior:SurfaceAdhesion { singTh = 0 }
+		Behavior:ParticleRepulsion { }
+		Behavior:ViscousDynamics { }
+		Behavior:KeepInBounds { }
+		Shader:OrientParticle { }
+		Shader:UseMaterial { }
+		Shader:ParticleShaderDisk { }
+		Shader:CopyParticle { eventcode = 2, targetparticles = "particles", destPos = "OBJPosition" }
+	}
+}
+surface OpenMesh:PolyMesh:ArrayKernel "ludwig" {
+}
+
+
+surface Variational:RBF "RBFSurf" {
+	pCenters = particles
+}
+
+

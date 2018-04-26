@@ -1,0 +1,123 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"floaters" {
+		Attribute:AdaptiveRepulsionData { }
+		Attribute:ImplicitInterrogator { implicit = "csg" }
+		Attribute:ParticleBoundingBox { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleLocality { }
+		Attribute:ParticleMaterial { }
+		Attribute:ParticleOrientation { gravity = (0,0,0) }
+		Attribute:ParticlePosition { }
+		Attribute:ParticleVelocity { }
+		Attribute:ParticleVisibility { }
+		Attribute:ViewDependence { camera = (0,0,5) }
+		Behavior:ParticleFate { cap = 1000 }
+		Behavior:ViscousDynamics { }
+		Behavior:SurfaceAdhesion { }
+		Behavior:ParticleRepulsion { }
+		Behavior:ParticleCreation { }
+		Shader:OrientParticle { }
+		Shader:UseMaterial { }
+		Shader:ParticleShaderDisk { }
+		Shader:CopyParticle { eventcode = 2, targetparticles = "controls" }
+	}
+}
+
+surface Algebraic:Quadric:Cylinder "cyl" {
+	-1 0 0 0 1 0 1 0 0 0
+}
+surface Geometric:Plane "top" {
+	0 0 1 4.5
+}
+surface Geometric:Plane "bot" {
+	0 0 -1 3.5
+}
+
+surface BinaryOp:CSGIntersection "intz" {
+	A = top
+	B = bot
+}
+surface BinaryOp:CSGIntersection "shortcyl" {
+	A = cyl
+	B = intz
+}
+
+surface Geometric:Plane "x0" {
+	1 0 0 2.7
+}
+
+surface Geometric:Plane "x1" {
+	-1 0 0 2.3
+}
+
+surface Geometric:Plane "y0" {
+	0 1 0 2.7
+}
+
+surface Geometric:Plane "y1" {
+	0 -1 0 2.3
+}
+
+surface Geometric:Plane "z0" {
+	0 0 1 2.5
+}
+
+surface Geometric:Plane "z1" {
+	0 0 -1 2.5
+}
+
+surface BinaryOp:CSGIntersection "cubx" {
+	A = x0
+	B = x1
+}
+
+surface BinaryOp:CSGIntersection "cuby" {
+	A = y0
+	B = y1
+}
+
+surface BinaryOp:CSGIntersection "cubz" {
+	A = z0
+	B = z1
+}
+
+surface BinaryOp:CSGIntersection "cubxy" {
+	A = cubx
+	B = cuby
+}
+
+surface BinaryOp:CSGIntersection "cube" {
+	A = cubxy
+	B = cubz
+}
+
+surface BinaryOp:CSGUnion "part" {
+	A = shortcyl
+	B = cube
+}
+
+surface Algebraic:Quadric:Cylinder "hole1" {
+	-0.05 0 -0.4 0 0 0 1 0 0 1
+}
+
+surface Algebraic:Quadric:Cylinder "hole2" {
+	-0.07 0.6 0 0 1 0 0 0 0 1
+}
+
+surface UnaryOp:Complement "chole1" {
+	A = hole1
+}
+
+surface UnaryOp:Complement "chole2" {
+	A = hole2
+}
+
+surface BinaryOp:CSGIntersection "whole1" {
+	A = part
+	B = chole1
+}
+
+surface BinaryOp:CSGIntersection "csg" {
+	A = whole1
+	B = chole2
+}

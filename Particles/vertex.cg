@@ -1,0 +1,19 @@
+void main(
+	double4 positionWC : POSITION,				
+    float4 normalWC   : NORMAL,
+    out float4 oPositionCC : POSITION,	
+    out float3 oPosEC : TEXCOORD0,			
+    out float3 oNormalEC   : TEXCOORD1,
+	out float3 oDiskCenterEC : TEXCOORD2,
+	uniform float4x4 modelView,	
+	uniform float4x4 modelViewIT,
+    uniform float4x4 modelViewProj,
+	uniform float4x4 viewMatrix,
+	uniform float3 diskCenterWC)			
+{
+  oPositionCC = mul(modelViewProj, positionWC);
+  oPosEC = mul(modelView, positionWC);
+  oNormalEC = normalize(mul(modelViewIT, normalWC));
+  float4 diskCenterWC4 = float4(diskCenterWC.xyz, 1.0);
+  oDiskCenterEC = mul(modelView, diskCenterWC4);
+}

@@ -1,0 +1,54 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"floaters" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:ImplicitInterrogator  { implicit = "tps" }
+		Attribute:ParticleBoundingBox  { min = (-5,-5,-5), max = (5,5,5) }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { }
+		Attribute:ViewDependence  { camera = (-2.3672,-4.72909,1.0918) }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { minpop = 450 }
+		Behavior:KeepInBounds  { }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { }
+		Shader:CopyParticle  { eventcode = 2, targetparticles = "controls" }
+	}
+	"controls" {
+		Attribute:ImplicitInterrogator [ ParticlePosition = "VertexPosition" ] { implicit = "Algebraic:Torus:1" }
+		Attribute:MeshInterrogator  { surface = "sp" }
+		Attribute:ParticleMaterial  { all_fdiff = (1,1,0,1) }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticleVelocity  { }
+		Attribute:VertexPosition  { }
+		Attribute:VertexScalar  { numElements = 5 }
+		Behavior:SurfaceDeformation [ ParticleNormal = "ParticleOrientation", ParticlePosition = "VertexPosition", ParticleScalar = "VertexScalar" ] { }
+		Shader:OrientParticle [ ParticlePosition = "VertexPosition", ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderSphere  { }
+	}
+}
+surface Algebraic:Torus "Algebraic:Torus:1" {
+	1.14131e-030 0 0 0 -5.5 0 -5.5 0 0 6 0 0 0 0 0 0 0 0 0 0 5.5 0 2 0 5.5 0 0 0 0 2 0 2 0 0 1
+}
+
+
+surface ThinPlateSpline "tps" {
+	pos = controls:VertexPosition
+	val = controls:VertexScalar
+	0.9 0 0 0 -1.3 0 1 0 -0.3 2 0 0
+}
+
+
+mesh sp {
+	"C:\Documents and Settings\ericl\Desktop\wickbert_clean2\samples\tpstest.obj"
+}
+

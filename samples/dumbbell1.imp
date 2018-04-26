@@ -1,0 +1,15 @@
+v0.3
+BinaryOp:Union 2 1 1 {
+	Geometric:Sphere 4 0 0 2 1 
+	BinaryOp:Intersection 2 1 1 {
+		BinaryOp:Intersection 2 1 1 {
+			Geometric:Plane 4 0 0 1 2 
+			Algebraic:Quadric:Cylinder 10 -0.2 0 0 0 1 0 1 0 0 0 
+		}
+
+		Geometric:Plane 4 0 0 -1 2 
+	}
+
+}
+
+end

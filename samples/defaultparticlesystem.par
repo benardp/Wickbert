@@ -1,0 +1,33 @@
+v0.2
+floaters
+{
+ Attribute:AdaptiveRepulsionData { shortname0 = 0.25, shortname1 = 0.5, shortname2 = 1, shortname3 = 6, shortname4 = 4.8, shortname5 = 3, }
+ Attribute:ImplicitInterrogator { shortname0 = 0, }
+ Attribute:ParticleLocality { }
+ Attribute:ParticleMaterial { }
+ Attribute:ParticleOrientation { shortname0 = 0, shortname1 = 0, shortname2 = 0, }
+ Attribute:ParticlePosition { }
+ Attribute:ParticleVelocity { }
+ Attribute:ParticleBoundingBox { shortname0 = -15, shortname1 = -15, shortname2 = -15, shortname3 = 15, shortname4 = 15, shortname5 = 15, }
+ Behavior:VelocityIntegrator { }
+ Behavior:SurfaceAdhesion { shortname0 = 15, }
+ Behavior:ParticleRepulsion { shortname0 = 10, shortname1 = 15, }
+ Behavior:ParticleFate { shortname0 = 4, shortname1 = 0.2, shortname2 = 0.7, shortname3 = 1000, }
+ Behavior:ParticleCreation { shortname0 = 10, shortname1 = 1, shortname2 = 497, }
+ Behavior:KeepInBounds { }
+ Shader:ParticleShaderDisk { shortname0 = 10 , shortname1 = 0.5 , }
+ Shader:ParticleShaderConstMaterial { shortname0 = 1 , shortname1 = 0 , shortname2 = 0 , shortname3 = 1 , shortname4 = 0 , shortname5 = 0 , shortname6 = 1 , shortname7 = 1 , shortname8 = 0 , shortname9 = 0 , shortname10 = 0 , shortname11 = 0 , }
+ Shader:CopyParticle { shortname0 = 2 , shortname1 = 1 , }
+}
+controls
+{
+ Attribute:ImplicitInterrogator { shortname0 = 0, }
+ Attribute:ParticleMaterial { }
+ Attribute:ParticleOrientation { shortname0 = 0, shortname1 = 0, shortname2 = 0, }
+ Attribute:ParticleDesiredOrientation { }
+ Attribute:ParticlePosition { }
+ Attribute:ParticleVelocity { }
+ Behavior:SurfaceDeformation { shortname0 = 15, }
+ Shader:ParticleShaderCylinder { shortname0 = 0.1 , shortname1 = 0.1 , shortname2 = 0.1 , shortname3 = 10 , shortname4 = 1 , }
+}
+end

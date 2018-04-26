@@ -1,0 +1,7 @@
+v0.3
+BinaryOp:Union 2 1 1 {
+	Algebraic:Quadric:Cylinder 10 -1 0 0 0 1 0 0 0 0 1 
+	Algebraic:Quadric:Cylinder 10 -1 0 0 0 0 0 1 0 0 1 
+}
+
+end

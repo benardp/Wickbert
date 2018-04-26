@@ -1,0 +1,48 @@
+v0.3
+"rbfParticles" {
+	"rbfConstraints" {
+		Attribute:ImplicitInterrogator { implicit = "rbf" }
+		Attribute:MeshInterrogator { surface = "rbfCenters" }
+		Attribute:ParticleScalar "rbfConstraintValues" { }
+		Attribute:VertexOrientation { }
+		Attribute:VertexPosition { }
+		Attribute:ParticleMaterial "exterior" { all_fdiff = (0.75,0.75,0.75,1), sel_fdiff = (1,0,1,1) } 
+		Attribute:ParticleMaterial "interior" { all_fdiff = (0.2,0.2,0.2,1), sel_fdiff = (1,0,1,1) } 
+		Attribute:ParticleMaterial "zero" { all_fdiff = (0,1,0,1), sel_fdiff = (1,0,1,1) } 
+		Behavior:SurfaceDeformation { }
+		Behavior:SurfaceDeformation { }
+		Shader:UseMaterialSwitch { switchScalar = "rbfConstraintValues", materialNegative = "interior", materialZero = "zero", materialPositive = "exterior" }
+		Shader:OrientParticle { }
+		Shader:ParticleShaderSphere { r = 0.15 }
+	}
+	"rbfFloaters" {
+		Attribute:AdaptiveRepulsionData { }
+		Attribute:ImplicitInterrogator { implicit = "rbf" }
+		Attribute:ParticleBoundingBox { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleLocality { }
+		Attribute:ParticleMaterial { }
+		Attribute:ParticleOrientation { gravity = (0,0,0) }
+		Attribute:ParticlePosition { }
+		Attribute:ParticleVelocity { }
+		Attribute:ParticleVisibility { }
+		Attribute:ViewDependence { camera = (-2.20492,-1.16843,-0.730117) }
+		Behavior:ParticleFate { }
+		Behavior:ViscousDynamics { }
+		Behavior:SurfaceAdhesion { }
+		Behavior:ParticleRepulsion { }
+		Behavior:ParticleCreation { }
+		Shader:OrientParticle { }
+		Shader:UseMaterial { }
+		Shader:ParticleShaderDisk { }
+		Shader:CopyParticle { eventcode = 2, targetparticles = "rbfConstraints" }
+	}
+}
+surface Variational:RBF "rbf" {
+	pCenters = "rbfConstraints"
+}
+
+
+surface OpenMesh:PolyMesh:ArrayKernel "rbfCenters" {
+}
+
+	

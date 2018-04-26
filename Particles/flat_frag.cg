@@ -1,0 +1,32 @@
+void main(			  
+	float4 fwindowpos : WPOS,
+	float3 positionEC  : TEXCOORD0,                     
+    float3 normalEC    : TEXCOORD1,
+	float3 diskCenterEC : TEXCOORD2,
+    out float4 oColor   : COLOR,
+	out float oDepth	: DEPTH,
+    uniform float3 lightPositionEC,
+	uniform float4 diffuseColor,
+	uniform float diskRadius,
+	uniform float depthRange,
+	uniform float toleranceScaleFactor,
+	uniform samplerRECT firstPassDepth)
+{
+
+  if (distance(diskCenterEC, positionEC) > diskRadius) discard;
+
+  // First, determine whether or not the current fragment is within
+  // the valid drawing range
+  float topDepth = texRECT(firstPassDepth, fwindowpos.xy);
+  float tolerance = toleranceScaleFactor * (diskRadius / depthRange);
+  if (fwindowpos.z > topDepth + tolerance) discard;
+
+  // Compute the diffuse light
+  float3 N = normalize(normalEC);
+  float3 L = normalize(lightPositionEC - positionEC);
+  float diffuseLight = max(dot(L, N), 0);
+ 
+  oColor.xyz = normalize(diffuseColor.xyz) * diffuseLight;
+  oColor.w = diffuseColor.w;
+  oDepth = distance(diskCenterEC, positionEC) / diskRadius;  
+}

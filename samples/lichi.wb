@@ -1,0 +1,42 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"floaters" {
+		Attribute:AdaptiveRepulsionData { }
+		Attribute:ImplicitInterrogator { implicit = "balls" }
+		Attribute:ParticleBoundingBox { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleLocality { }
+		Attribute:ParticleMaterial { }
+		Attribute:ParticleOrientation { gravity = (0,0,0) }
+		Attribute:ParticlePosition { }
+		Attribute:ParticleVelocity { }
+		Attribute:ParticleVisibility { }
+		Attribute:ViewDependence { camera = (0,0,5) }
+		Behavior:ParticleFate { cap = 1000 }
+		Behavior:ViscousDynamics { }
+		Behavior:SurfaceAdhesion { }
+		Behavior:ParticleRepulsion { }
+		Behavior:ParticleCreation { }
+		Shader:OrientParticle { }
+		Shader:UseMaterial { }
+		Shader:ParticleShaderDisk { }
+		Shader:CopyParticle { eventcode = 2, targetparticles = "controls" }
+	}
+}
+surface Algebraic:Quadric:Ellipsoid "ball1" {
+	-1 0 2 0 1 0 1 0 0 1
+}
+
+
+surface Algebraic:Quadric:Ellipsoid "ball2" {
+	-1 0 -2 0 1 0 1 0 0 1
+}
+
+
+surface BinaryOp:Union "balls" {
+	A = ball1
+	B = ball2
+	Continuity = 0
+	Sign = -1
+}
+
+

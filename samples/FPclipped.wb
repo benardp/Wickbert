@@ -1,0 +1,110 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"Implicit" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:Contours  { }
+		Attribute:ImplicitInterrogator  { implicit = "Fclip" }
+		Attribute:ParticleAge  { useParticleAge = false }
+		Attribute:ParticleBoundingBox  { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Behavior:ParticleValueDeath  { threshold = 0.5 }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { scale = 1 }
+	}
+	"Parabolics" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:Contours  { }
+		Attribute:ImplicitInterrogator  { implicit = "Pclip" }
+		Attribute:ParticleAge  { }
+		Attribute:ParticleBoundingBox  { min = (-5,-5,-5), max = (5,5,5) }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { all_fdiff = (1,0.75,0,1) }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:SurfaceAdhesion [ ParticleNormal = "ParticleOrientation" ] { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:AsymmetricRepulsion  { factor = 1.1, source = "features" }
+		Behavior:ParticleCreation  { }
+		Behavior:KeepInBounds  { }
+		Behavior:ParticleValueDeath  { threshold = 0.1 }
+		Behavior:FeatureDetector [ ParticleNormal = "ParticleOrientation" ] { target = "features" }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { scale = 1 }
+	}
+	"features" {
+		Attribute:AdaptiveRepulsionData  { sigma_hat = 0.02, sigma_max = 0.25 }
+		Attribute:Contours  { }
+		Attribute:ParticleAge  { }
+		Attribute:ParticleBoundingBox  { }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleNormal  { }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ImplicitInterrogator "parabolic"  { implicit = "Ppoint" }
+		Attribute:ImplicitInterrogator "plane"  { implicit = "clip" }
+		Behavior:ParticleFate [ impint = "parabolic" ] { cap = 1000 }
+		Behavior:ViscousDynamics  { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:CurveAdhesion [ ImplicitInterrogator = "plane", ImplicitInterrogator = "parabolic" ] { }
+		Shader:OrientParticle  { }
+		Shader:ParticleShaderSphere  { }
+	}
+}
+surface Algebraic:Torus "F" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+
+surface UnaryOp:DirectionalDerivative "Fv" {
+	A = F
+	v = (0,0.707,0.707)
+}
+
+
+surface UnaryOp:ParabolicPoints "P" {
+	A = F
+}
+
+
+surface Algebraic:Quadric:Ellipsoid "point" {
+	0 0 0 0 1 0 1 0 0 1
+}
+
+
+surface BinaryOp:Product "Ppoint" {
+	A = P
+	B = point
+}
+
+
+surface Geometric:Plane "clip" {
+	0 1 0 0
+}
+
+
+surface BinaryOp:CSGIntersection "Fclip" {
+	A = F
+	B = clip
+}
+
+
+surface BinaryOp:CSGIntersection "Pclip" {
+	A = Ppoint
+	B = clip
+}
+
+

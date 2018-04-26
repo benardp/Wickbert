@@ -1,0 +1,34 @@
+v0.3
+"WitkinHeckbert94" {
+	"floaters" {
+		Attribute:AdaptiveRepulsionData { }
+		Attribute:ImplicitInterrogator { implicit = "Algebraic:Quadric:Ellipsoid:1" }
+		Attribute:ParticleBoundingBox { min = (-2,-2,-2), max = (2,2,2) }
+		Attribute:ParticleLocalityGrid { xres = 20, yres = 20, zres = 20 }
+		Attribute:ParticleMaterial { }
+		Attribute:ParticleOrientation { gravity = (0,0,0) }
+		Attribute:ParticlePosition { }
+		Attribute:ParticleVelocity { }
+		Behavior:ParticleFate { cap = 1000 }
+		Behavior:ViscousDynamics { }
+		Behavior:SurfaceAdhesion { }
+		Behavior:ParticleRepulsion { }
+		Behavior:ParticleCreation { }
+		Shader:UseMaterial { }
+		Shader:ShowCell { }
+		Shader:OrientParticle { }
+		Shader:ParticleShaderDisk { }
+		Shader:CopyParticle { eventcode = 2, targetparticles = "controls" }
+	}
+	"controls" {
+		Attribute:ImplicitInterrogator { implicit = "Algebraic:Quadric:Ellipsoid:1" }
+		Attribute:ParticleMaterial { all_fdiff = (1,1,0,1) }
+		Attribute:ParticleOrientation { gravity = (0,0,0) }
+		Attribute:ParticlePosition { }
+		Attribute:ParticleVelocity { }
+		Behavior:SurfaceDeformation { }
+		Shader:OrientParticle { }
+		Shader:UseMaterial { }
+		Shader:ParticleShaderCylinder { }
+	}
+}

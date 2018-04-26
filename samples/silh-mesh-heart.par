@@ -1,0 +1,48 @@
+v0.2
+controls
+{
+ Attribute:ImplicitInterrogator { shortname0 = 0, }
+ Attribute:ParticleMaterial { }
+ Attribute:ParticleOrientation { shortname0 = 0, shortname1 = 0, shortname2 = 0, }
+ Attribute:ParticlePosition { }
+ Attribute:ParticleVelocity { }
+ Behavior:SurfaceDeformation { shortname0 = 15, }
+ Shader:ParticleShaderCylinder { shortname0 = 0.1 , shortname1 = 0 , shortname2 = 0.3 , shortname3 = 10 , shortname4 = 1 , }
+}
+mesh
+{
+ Attribute:ImplicitInterrogator { shortname0 = 0, }
+ Attribute:ParticleMaterial { }
+ Attribute:ParticleMesh { }
+ Attribute:ParticleOrientation { shortname0 = 0, shortname1 = 0, shortname2 = 0, }
+ Attribute:ParticleVelocity { }
+ Behavior:VelocityIntegrator { }
+ Behavior:MeshShape { shortname0 = 0.5, shortname1 = 0.1, shortname2 = 1.3, shortname3 = 0.7, shortname4 = 0.05, shortname5 = 0.05, }
+ Behavior:SurfaceAdhesion { shortname0 = 15, }
+ Behavior:TopologyInterrogator { shortname0 = 30, shortname1 = 0, }
+ Shader:ParticleShaderTriangle { shortname0 = 1 , shortname1 = 0 , shortname2 = 1 , }
+ Shader:ParticleShaderTriangle { shortname0 = 0 , shortname1 = 1 , shortname2 = 1 , }
+}
+silhouette
+{
+ Attribute:AdaptiveRepulsionData { shortname0 = 0.125, shortname1 = 0.25, shortname2 = 0.5, shortname3 = 1, shortname4 = 0.009, shortname5 = 3, }
+ Attribute:ImplicitInterrogator { shortname0 = 0, }
+ Attribute:ParticleAge { }
+ Attribute:ParticleLocality { }
+ Attribute:ParticleMaterial { }
+ Attribute:ParticleOrientation { shortname0 = 0, shortname1 = 0, shortname2 = 0, }
+ Attribute:ParticlePosition { }
+ Attribute:ParticleVelocity { }
+ Attribute:ParticleBoundingBox { shortname0 = -5, shortname1 = -5, shortname2 = -5, shortname3 = 5, shortname4 = 5, shortname5 = 5, }
+ Behavior:VelocityIntegrator { }
+ Behavior:SurfaceAdhesion { shortname0 = 15, }
+ Behavior:ParticleRepulsion { shortname0 = 1, shortname1 = 0.1, }
+ Behavior:SilhouetteAdhesion { shortname0 = 0.1, }
+ Behavior:SilhouetteFate { shortname0 = 0.5, shortname1 = 100, }
+ Behavior:ParticleCreation { shortname0 = 10, shortname1 = 1, shortname2 = 497, }
+ Behavior:SingularityAdhesion { shortname0 = 0.1, shortname1 = 0.1, shortname2 = 3, shortname3 = 0.1, shortname4 = 20, shortname5 = 30, shortname6 = 0, }
+ Shader:ParticleShaderStroke { shortname0 = 0.02 , shortname1 = 0.1 , shortname2 = 1 , shortname3 = 0.001 , shortname4 = 0.5 , }
+ Shader:ParticleShaderSphere { shortname0 = 0.05 , shortname1 = 10 , }
+}
+
+end

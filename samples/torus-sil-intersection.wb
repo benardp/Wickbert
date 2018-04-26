@@ -1,0 +1,39 @@
+Wickbert-0.3
+particlesystem "WitkinHeckbert94" {
+	"floaters" {
+		Attribute:AdaptiveRepulsionData  { }
+		Attribute:Contours  { }
+		Attribute:ParticleAge  { }
+		Attribute:ParticleBoundingBox  { min = (-15,-15,-15), max = (15,15,15) }
+		Attribute:ParticleLocality  { }
+		Attribute:ParticleMaterial  { }
+		Attribute:ParticleOrientation  { gravity = (0,0,0) }
+		Attribute:ParticlePosition  { }
+		Attribute:ParticleVector  { }
+		Attribute:ParticleVelocity  { }
+		Attribute:ParticleVisibility [ ParticleNormal = "ParticleOrientation" ] { visMethod = 0, offset = 0.5 }
+		Attribute:ViewDependence  { camera = (-1.03956,0.680659,4.84314) }
+		Attribute:ImplicitInterrogator "sil"  { implicit = "sil" }
+		Attribute:ImplicitInterrogator "torus"  { implicit = "torus" }
+		Behavior:ParticleFate [ ParticleNormal = "ParticleOrientation", impint = "torus" ] { }
+		Behavior:ViscousDynamics  { }
+		Behavior:ParticleRepulsion  { }
+		Behavior:ParticleCreation  { }
+		Behavior:CurveAdhesion [ ImplicitInterrogator = "torus", ImplicitInterrogator = "sil", ParticleNormal = "ParticleOrientation" ] { }
+		Shader:OrientParticle [ ParticleNormal = "ParticleOrientation" ] { }
+		Shader:UseMaterial  { }
+		Shader:ParticleShaderDisk  { scale = 0 }
+		Shader:ShaderIntersectionContour [ ImplicitInterrogator = "torus", ImplicitInterrogator = "sil" ] { loopCall = 0 }
+	}
+}
+surface Algebraic:Torus "torus" {
+	9 0 0 0 -10 0 -10 0 0 6 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 2 0 2 0 0 1
+}
+
+
+surface UnaryOp:DirectionalDerivative "sil" {
+	A = torus
+	v = (1,0,1)
+}
+
+
