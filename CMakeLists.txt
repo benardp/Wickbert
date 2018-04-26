@@ -126,18 +126,14 @@ include(${wxWidgets_USE_FILE})
 find_package(OpenMesh REQUIRED)
 
 IF(WB_USE_CG)
-SET(CG_LIB_PATH CACHE PATH "Path to NVIDIA CG library" )
-SET(CG_INCLUDE_PATH CACHE PATH "Path to NVIDIA CG includes" )
-SET(GLH_INCLUDE_PATH CACHE PATH "Path to nvsdk GLH includes" )
-INCLUDE_DIRECTORIES(
-  ${CG_INCLUDE_PATH} ${GLH_INCLUDE_PATH}
-)
+find_package(Cg)
+INCLUDE_DIRECTORIES(${CG_INCLUDE_PATH})
 ENDIF(WB_USE_CG)
 
 IF(WB_USE_CGAL)
 
 # CGAL and its components
-find_package( CGAL QUIET COMPONENTS  )
+find_package( CGAL QUIET COMPONENTS  Core )
 if ( NOT CGAL_FOUND )
   message(STATUS "This project requires the CGAL library, and will not be compiled.")
   return()  
