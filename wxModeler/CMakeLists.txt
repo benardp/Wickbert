@@ -36,18 +36,19 @@ IF(APPLE)
         ${wxWidgets_LIBRARIES}
         ${GSL_LIBRARIES}
         )
+    set_target_properties(wxModeler PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist)
 
-SET(wxModeler_PATH ${EXECUTABLE_OUTPUT_PATH})
-IF(NOT wxModeler_PATH)
-SET(wxModeler_PATH ${CMAKE_CURRENT_BINARY_DIR})
-ENDIF(NOT wxModeler_PATH)
-FIND_PROGRAM(VTK_APPLE_RESOURCE Rez /Developer/Tools)
-IF(VTK_APPLE_RESOURCE)
-ADD_CUSTOM_COMMAND(TARGET wxModeler POST_BUILD
-    COMMAND ${VTK_APPLE_RESOURCE}
-    ARGS Carbon.r -o
-    ${wxModeler_PATH}/wxModeler
-    TARGET wxModeler)
+    SET(wxModeler_PATH ${EXECUTABLE_OUTPUT_PATH})
+    IF(NOT wxModeler_PATH)
+    SET(wxModeler_PATH ${CMAKE_CURRENT_BINARY_DIR})
+    ENDIF(NOT wxModeler_PATH)
+    FIND_PROGRAM(VTK_APPLE_RESOURCE Rez /Developer/Tools)
+    IF(VTK_APPLE_RESOURCE)
+    ADD_CUSTOM_COMMAND(TARGET wxModeler POST_BUILD
+        COMMAND ${VTK_APPLE_RESOURCE}
+        ARGS Carbon.r -o
+        ${wxModeler_PATH}/wxModeler
+        TARGET wxModeler)
 ENDIF(VTK_APPLE_RESOURCE)
 
 ENDIF(APPLE)

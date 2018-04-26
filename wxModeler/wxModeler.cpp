@@ -62,7 +62,7 @@ bool Modeler::OnInit()
 
 	mainframe = new MainFrame("wxModeler",wxDefaultPosition,wxSize(1000,600));
 	mainframe->Show(TRUE);
-	SetTopWindow(mainframe);
+    SetTopWindow(mainframe);
 
 	if (argc == 2) {
 		wxString filename = argv[1];
