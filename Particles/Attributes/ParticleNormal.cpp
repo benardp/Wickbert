@@ -9,8 +9,7 @@
 	#include <float.h>
 #else
 	#include <math.h>
-	extern "C" int isnan(double);
-	#define _isnan isnan
+#define _isnan isnan
 #endif
 
 REGISTER_PARTICLESTUFF(ParticleNormal,"Attribute:ParticleNormal");

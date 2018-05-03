@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <limits.h>
 
 
 SparseScalarLattice::SparseScalarLattice(scalar vsize) : ScalarLattice(vsize) {;}

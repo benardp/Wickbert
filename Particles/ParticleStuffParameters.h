@@ -9,6 +9,7 @@
 #pragma warning(disable : 4996)
 
 #include <string>
+#include <cstring>
 #include <vector>
 #include <iostream> 
 #include "libgm/gmVec3.h"

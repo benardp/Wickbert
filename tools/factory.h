@@ -55,6 +55,7 @@
 #pragma warning(disable : 4786)
 #endif
 
+#include <memory>
 #include <map>
 
 typedef std::string defaultIDKeyType;

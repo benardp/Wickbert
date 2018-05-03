@@ -10,6 +10,7 @@
 #ifndef _MSC_VER
 #include "itoa.h"
 #include <string>
+#include <algorithm>
 
 char* itoa( int value, char* result, int base ) {
 	

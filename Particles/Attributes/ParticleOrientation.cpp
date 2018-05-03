@@ -9,7 +9,6 @@
 	#include <float.h>
 #else
 	#include <math.h>
-	extern "C" int isnan(double);
 	#define _isnan isnan
 #endif
 
