@@ -49,7 +49,7 @@ struct index2set_hash_compare{
   }
 };
 
-typedef hash_map< Index2Set,Vector3d,index2set_hash_compare> EdgeMap;
+typedef std::map< Index2Set,Vector3d,index2set_hash_compare> EdgeMap;
 
 
 #else
@@ -296,7 +296,7 @@ void SignedDistanceTransform::Voxelize(SparseScalarLattice& lattice, scalar max_
 
 
 #ifdef WIN32
-typedef hash_map<Cell, std::vector<unsigned int>, cell_hash_compare> IndexLattice;
+typedef std::map<Cell, std::vector<unsigned int>, cell_hash_compare> IndexLattice;
 #else
 typedef HASH_VERSION::hash_map<Cell, std::vector<unsigned int>, hash_cell, equal_cell > IndexLattice;
 #endif 

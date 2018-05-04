@@ -31,7 +31,7 @@ class OctreeNode{
 };
 
 #ifdef WIN32
-typedef hash_map<Cell, OctreeNode * ,cell_hash_compare> _ADF;
+typedef std::map<Cell, OctreeNode * ,cell_hash_compare> _ADF;
 #else
 typedef HASH_VERSION::hash_map<Cell, OctreeNode * , hash_cell, equal_cell > _ADF;
 #endif 

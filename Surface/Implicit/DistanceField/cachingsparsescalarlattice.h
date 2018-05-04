@@ -14,8 +14,8 @@ class CachingSparseScalarLattice : public SparseScalarLattice{
   struct S8{ scalar   vals[8]; };
 
 #ifdef WIN32
-typedef HASH_VERSION::hash_map< Cell, V8, cell_hash_compare> VectorCache;
-typedef HASH_VERSION::hash_map< Cell, S8, cell_hash_compare> ScalarCache;
+typedef std::map< Cell, V8, cell_hash_compare> VectorCache;
+typedef std::map< Cell, S8, cell_hash_compare> ScalarCache;
 #else
 typedef HASH_VERSION::hash_map< Cell, V8, hash_cell, equal_cell > VectorCache;
 typedef HASH_VERSION::hash_map< Cell, S8, hash_cell, equal_cell > ScalarCache;

@@ -20,9 +20,10 @@ using namespace __gnu_cxx;
 #endif
 
 #elif WIN32
-#include <hash_set>
-#include <hash_map>
-using namespace stdext;
+#include <map>
+#include <set>
+//#include <hash_map>
+//using namespace stdext;
 #define HASH_VERSION stdext
 #endif
 

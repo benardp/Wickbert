@@ -100,7 +100,7 @@ struct cell_hash_compare
 };
 
 
-typedef hash_set<Cell,cell_hash_compare> CellSet;
+typedef std::set<Cell,cell_hash_compare> CellSet;
 #else
 struct hash_cell{
   std::hash<int> H;

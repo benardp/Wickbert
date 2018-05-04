@@ -94,14 +94,6 @@ IF(WB_USE_VTK)
     ENDIF(VTK_FOUND)
 ENDIF(WB_USE_VTK)
 
-# Boost and its components
-find_package( Boost REQUIRED )
-
-if ( NOT Boost_FOUND )
-  message(STATUS "This project requires the Boost library, and will not be compiled.")
-  return()
-endif()
-
 FIND_PACKAGE(GSL)
 
 IF(WB_USE_SFL)
@@ -133,10 +125,18 @@ ENDIF(WB_USE_CG)
 IF(WB_USE_CGAL)
 
 # CGAL and its components
-find_package( CGAL QUIET COMPONENTS  Core )
+find_package( CGAL REQUIRED COMPONENTS  Core )
 if ( NOT CGAL_FOUND )
   message(STATUS "This project requires the CGAL library, and will not be compiled.")
   return()  
+endif()
+
+# Boost and its components
+find_package( Boost REQUIRED )
+
+if ( NOT Boost_FOUND )
+  message(STATUS "This project requires the Boost library, and will not be compiled.")
+  return()
 endif()
 
 # include helper file

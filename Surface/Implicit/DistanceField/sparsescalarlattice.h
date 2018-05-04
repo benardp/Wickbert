@@ -6,7 +6,7 @@
 #include "triangle.h"
 
 #ifdef WIN32
-typedef hash_map<Cell,scalar,cell_hash_compare> _SparseScalarLattice;
+typedef std::map<Cell,scalar,cell_hash_compare> _SparseScalarLattice;
 #else
 typedef HASH_VERSION::hash_map<Cell, scalar, hash_cell, equal_cell > _SparseScalarLattice;
 #endif 

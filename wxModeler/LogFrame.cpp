@@ -21,7 +21,7 @@ END_EVENT_TABLE()
 //LogFrame Implementation (a log window)
 ///////////////////////////////////////////////
 
-LogFrame::LogFrame(const wxString &title, const wxPoint &pos, const wxSize &size)
+LogFrame::LogFrame(const wxString & title, const wxPoint & pos, const wxSize & size)
 : wxFrame(NULL, -1, title, pos, size)
 {
 
@@ -68,7 +68,7 @@ void LogFrame::OnSave(wxCommandEvent &event)
 	
 	wxString filename = filedialog->GetPath();
 	
-	std::ofstream out(filename.c_str());
+	std::ofstream out(filename.ToStdString());
 	if (out) {
 		out << logTxtControl->GetValue() << std::endl;
 		out.close();	

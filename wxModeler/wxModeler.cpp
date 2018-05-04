@@ -310,7 +310,7 @@ MainFrame::LoadWB(wxString filename)
 	ParticleSystems *particlesystems = &(wxGetApp().particlesystems);
 	Surfaces *surfaces = &(wxGetApp().surfaces);
 
-	std::ifstream in(filename);
+	std::ifstream in(filename.ToStdString());
 	std::string token;
 	if (!(in >> token) || token != "Wickbert-0.3") {
 		wxMessageBox("Wrong version.\n"
@@ -382,7 +382,7 @@ void MainFrame::LoadPar(wxString filename)
 	Surfaces *surfaces = &(wxGetApp().surfaces);
 	std::string version;
 
-	std::ifstream in(filename.c_str());
+	std::ifstream in(filename.ToStdString());
 	if (!in) return;
 
 	in >> version;
@@ -424,7 +424,7 @@ void MainFrame::OnSave(wxCommandEvent &event)
 	wxString filename = filedialog->GetPath();
 
 	if (filename.Right(2) == "wb") {
-		std::ofstream out(filename.c_str());
+		std::ofstream out(filename.ToStdString());
 		if (out) {
 			out << "Wickbert-0.3" << std::endl;
 			for (unsigned int i = 0; i < particlesystems->size(); i++) {
@@ -443,7 +443,7 @@ void MainFrame::OnSave(wxCommandEvent &event)
 			out.close();
 		}
 	} else if (filename.Right(3) == "par") {
-		std::ofstream out(filename.c_str());
+		std::ofstream out(filename.ToStdString());
 		if (out) {
 			out << "v0.3" << std::endl;
 			/* save particle system */
@@ -451,7 +451,7 @@ void MainFrame::OnSave(wxCommandEvent &event)
 			out.close();
 		}
 	} else if (filename.Right(3) == "imp") {
-		std::ofstream out(filename.c_str());
+		std::ofstream out(filename.ToStdString());
 		if (out) {
 			/* save surfaces */
 			out << surfaces;

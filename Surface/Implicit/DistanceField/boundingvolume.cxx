@@ -1,6 +1,6 @@
 #include "boundingvolume.h"
 
-//#include "openGLutils.h"  
+#include <algorithm>
 
 /*
  * Expands this AABB to include a given vector
